@@ -1,0 +1,22 @@
+@font-face {
+    font-family: 'TitilliumWeb', sans-serif;
+    src: url("../assets/fonts/TitilliumWeb-Regular.ttf")  format("truetype");
+    font-style: normal;
+    font-weight: 400;
+}
+
+.titilliumWeb-Regular {
+    font-family: 'TitilliumWeb', sans-serif;
+    font-weight: regular;
+}
+
+@font-face {
+    font-family: 'TitilliumWeb', sans-serif;
+    src: url("../assets/fonts/TitilliumWeb-SemiBold.ttf")  format("truetype");
+    font-style: normal;
+    font-weight: 600;
+}
+.titilliumWeb-SemiBold {
+    font-family: 'TitilliumWeb', sans-serif;
+    font-weight: SemiBold;
+}
