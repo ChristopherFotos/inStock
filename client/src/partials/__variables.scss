@@ -1,23 +1,34 @@
 // colors: primary
+
+// primary global text color
 $black: #13182C;
+
+// primary white
 $white: #FFFFFF;
+
+// interactive elements
 $blue: #2E66E5;
 
-// secondary
+// colors: secondary
+// table column headers & placeholder text color
 $slate: #5C667E;
+
+// outlines, dividers, borders, table sorting icon
 $cloud: #BDC5D5;
 
-// background
+// nav bg & CTA button hover state bg
 $graphite: #232940;
+
+// page bg color, table column header bg, CTA bg
 $gray-lt: #F7F8F9;
 
-// support
+// supporting for in-stock label & out of stock
 $green: #158463;
 $black: #C94515;
 
 // font
-$font-face: '.titilliumWeb-Regular';
-$font-face: '.titilliumWeb-SemiBold';
+$font-face: 'titilliumWeb-Regular';
+$font-face: 'titilliumWeb-SemiBold';
 
 // devices
 $mobile-breakpoint: 320px;
