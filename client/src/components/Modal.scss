@@ -1,0 +1,119 @@
+@import '../../partials/__variables.scss';
+@import '../../partials/__mixins.scss';
+
+/* Box-sizing border-box */
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 672px;
+    height: 262px;
+    visibility: visible;
+
+    &__container {
+        position: absolute;
+        left: 24%;
+        right: 24%;
+        top: 20%;
+        bottom: 52%;
+        background-color: white;
+        border-radius: 3px;
+        box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+        filter: blur(0);
+        transform: scale(1);
+        opacity: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+
+    &__title {
+        font-weight: 600;
+        font-size: 32px;
+        line-height: 40px;
+        color: $black;
+        width: 407px;
+        height: 40px;
+        position: absolute;
+        top: 225px;
+        left: 368px;
+        text-align: left;
+    }
+    &__copy {
+        position: absolute;
+        width: 544px;
+        height: 56px;
+        top: 281px;
+        left: 368px;
+        font-size: 16px;
+        line-height: 28px;
+        color: $black;
+        text-align: left;
+    }
+    &__but-container {
+        width: 100%;
+        position: absolute;
+        top: 369px;
+        left: 753px;
+        display: flex;
+        justify-content: row;
+        align-items: center;
+
+    }
+    &__cancel-but {
+        width: 71px;
+        height: 38px;
+        display: flex;
+        /* position: absolute;
+        top: 369px;
+        left: 753px; */
+        border-radius: 20px;
+        padding: 8px 16px;
+        background-color: $white;
+        color: $black;
+        border: 1px solid $cloud;
+    }
+
+    &__delete-but {
+        display: flex;
+        width: 71px;
+        height: 38px;
+        /* position: absolute;
+        top: 369px;
+        left: 841px; */
+        border-radius: 20px;
+        padding: 8px 16px;
+        background-color: $red;
+        color: $white;
+    }
+
+    &__close {
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        top: 201px;
+        left: 936px;
+    }
+    &__close-x {
+        width: 100%;
+        color: $black;
+        font-size: 4rem;
+    }
+ }
+}
+
+.modal.off {
+    opacity: 0;
+    visibility: hidden;
+    filter: blur(8px);
+    transform: scale(0.33);
+    box-shadow: 1rem 0 0 rgba(0, 0, 0, 0.2);
+  }
+// parent button - placeholder
+#centered-toggle-button {
+    position: absolute;
+  }
