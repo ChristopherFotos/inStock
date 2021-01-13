@@ -2,8 +2,12 @@ import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-d
 import React from 'react';
 import AddWarehouse from './components/AddWarehouse/AddWarehouse'
 import './App.css';
+import Header from './components/Header/Header';
+import Warehouselist from './components/Warehouselist/Warehouselist';
 
-function App() {
+class App extends React.Component {
+  
+  render(){
   return (
     <Router>
       <div>
@@ -20,7 +24,9 @@ function App() {
             </Switch>
       </div>
     </Router>
+
   );
+}
 }
 
 export default App;

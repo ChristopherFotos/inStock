@@ -1,0 +1,137 @@
+@font-face {
+  font-family: "TitilliumWeb", sans-serif;
+  src: url("../assets/fonts/TitilliumWeb-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+}
+.titilliumWeb-Regular {
+  font-family: "TitilliumWeb", sans-serif;
+  font-weight: regular;
+}
+
+@font-face {
+  font-family: "TitilliumWeb", sans-serif;
+  src: url("../assets/fonts/TitilliumWeb-SemiBold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 600;
+}
+.titilliumWeb-SemiBold {
+  font-family: "TitilliumWeb", sans-serif;
+  font-weight: SemiBold;
+}
+
+a {
+  text-decoration: none;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+.navbar {
+  background-color: #232940;
+  padding: 0 5%;
+}
+@media screen and (min-width: 768px) {
+  .navbar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 0 4.25%;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .navbar {
+    padding: 0 10.85%;
+  }
+}
+.navbar__image {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 30px 0 24px 0;
+}
+@media screen and (min-width: 768px) {
+  .navbar__image {
+    padding: 38px 0 130px 0;
+  }
+}
+.navbar__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.navbar__container-link, .navbar__container-active {
+  font-family: "TitilliumWeb";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  line-height: 20px;
+  margin: 0px 0px 88px 0px;
+  color: #BDC5D5;
+  padding-right: 30px;
+}
+.navbar__container-link:hover, .navbar__container-active:hover {
+  text-decoration: underline;
+}
+@media screen and (min-width: 768px) {
+  .navbar__container-link, .navbar__container-active {
+    padding: 0;
+  }
+}
+.navbar__container-active {
+  color: #FFFFFF;
+  border: 1px none white;
+  border-radius: 20px;
+  background-color: #13182C;
+  padding: 8px 48px;
+}
+@media screen and (min-width: 768px) {
+  .navbar__container-active {
+    padding: 8px 16px;
+    margin-right: 24px;
+  }
+}
+
+.foot {
+  background-color: #F7F8F9;
+}
+.foot__copyright {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: "TitilliumWeb";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.6875rem;
+  line-height: 16px;
+  padding: 490px 0 40px 0;
+  margin: 0;
+  color: #5C667E;
+  text-align: center;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+/*# sourceMappingURL=Header.css.map */
