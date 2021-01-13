@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-d
 import React from 'react';
 import './App.css';
 import Header from './components/Header/Header';
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import Warehouselist from './components/Warehouselist/Warehouselist';
 
 class App extends React.Component {
   
@@ -21,6 +23,7 @@ class App extends React.Component {
             <Route path="/warehouse/:id/inventory/:itemid" /> //displays a specific item info in a specific warehouse
           </Switch>
         </Router>
+
     </div>
     </Router>
    

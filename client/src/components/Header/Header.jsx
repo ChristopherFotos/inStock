@@ -6,7 +6,7 @@ import './Header.scss'
 function Header() {
   return (
     <div>
-      <header>
+      <nav>
         <div className="navbar">
           <div className="navbar__image">
             <img src={logo} alt="Instock site logo"/>
@@ -16,7 +16,8 @@ function Header() {
               <Link to='/inventory'><h3 className="navbar__container-link">Inventory</h3></Link>
             </div>
         </div>
-      </header> 
+      </nav>
+
       <footer className="foot">
       <p className="foot__copyright">© InStock Inc. All Rights Reserved.</p>
       </footer> 
