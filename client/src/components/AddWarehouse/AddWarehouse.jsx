@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import arrow from '../../assets/images/Icons/arrow_back-24px.svg'
+import add from '../../assets/images/Icons/add.svg'
 import axios from'axios'
 import Input from './Input/Input'
 import './AddWarehouse.scss'
@@ -80,7 +81,7 @@ export default class AddWarehouse extends Component {
 
                 <div className="form__button-container">
                     <button className="form__button">Cancel</button>
-                    <button className="form__button">Add Warehouse</button>
+                    <button className="form__button"><img src={add} className='plus-icon'/> Add Warehouse</button>
                 </div>
             </div>
         )

@@ -7,14 +7,15 @@
     height: 80%;
     width: 90vw;
     margin: auto auto;
-    border-radius: 12px;
+    border-radius: 3px;
     box-shadow: 0px 0px 13px 2px rgba(0,0,0,0.24);
     
 
     /* header, heading and subheading*/
     &__header{
         border-bottom: 1px solid $cloud;
-        padding: 1.4rem
+        padding: 1.4rem;
+        display: flex;
     }
 
     &__heading {
@@ -24,6 +25,7 @@
 
     &__back-arrow {
         display:inline ;
+        margin-right: 8px;
     }
 
     &__heading {
@@ -80,6 +82,7 @@
         display: flex;
         justify-content: space-around;
         padding: 16px 0;
+        border-radius: 0 0 3px 3px;
         @include tablet{
             justify-content: flex-end;
         }
@@ -89,17 +92,28 @@
         padding: 0.6rem 0;
         width: 45%;
         border-radius: 20px;
-        border: none;
+        border: 1px solid $cloud;
+        background-color: white;
         outline: none;
+        font-family: 'TitilliumWeb';
+        font-weight: bold;
+        transition: border 0.4s;
+        cursor: pointer;
+
+        &:hover {
+            border: 1px solid $slate;
+            transition: border 0.4s;
+        }
 
         &:nth-of-type(2){
             background-color: $blue;
-            color: white
+            color: white;
+            border: none;
         }
 
         @include tablet {
             width: auto;
-            padding: 1rem;
+            padding: 0.4rem 1rem;
             margin: 0 24px;
             border-radius: 25px;
             outline: none;
@@ -111,6 +125,8 @@
         display: none;
         padding-top: 4px;
         font-size: small;
+        font-weight: normal;
+        color: #C94515;
         @include desktop {
             display: flex;
             align-items: center;
@@ -131,4 +147,10 @@
         display: flex;
         padding: 16px;
     }
+}
+
+.plus-icon {
+    display:inline-block;
+    width: 10px;
+    height: 10px
 }
