@@ -56,10 +56,16 @@
     &__input {
         display: block;
         outline: none;
-        padding: 0.6rem 0;
+        padding: 0.6rem 8px;
         border: 1px solid $cloud;
         border-radius: 20px;
-        width: 100%;    
+        width: 95%;    
+
+        &--empty {
+            @include desktop {
+                border-color: #C94515;
+            }
+        }
     }
 
     /* buttons */
@@ -78,6 +84,7 @@
         width: 45%;
         border-radius: 20px;
         border: none;
+        outline: none;
 
         @include tablet {
             width: auto;
@@ -86,6 +93,25 @@
             border-radius: 25px;
             outline: none;
         }
+    }
+
+    /* validation */
+    &__validation-span{
+        display: none;
+        padding-top: 4px;
+        font-size: small;
+        @include desktop {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &__warning{
+        width: 16px;
+        height: 16px;
+        margin-right: 4px;
+        display: inline-block;
+        line-height: 1px;
     }
 }
 

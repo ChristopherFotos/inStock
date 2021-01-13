@@ -1,21 +1,22 @@
 import React, { Component } from 'react'
 import arrow from '../../assets/images/Icons/arrow_back-24px.svg'
+import axios from'axios'
+import Input from './Input/Input'
 import './AddWarehouse.scss'
 
 export default class AddWarehouse extends Component {
     constructor(props){
         super()
         this.state = {
-            id: "2922c286-16cd-4d43-ab98-c79f698aeab0",
-            name: "Manhattan",
-            address: "503 Broadway",
-            city: "New York",
-            country: "USA",
+            name: '',
+            address:'',
+            city: '',
+            country: '',
             contact: {
-              name: "Parmin Aujla",
-              position: "Warehouse Manager",
-              phone: "+1 (646) 123-1234",
-              email: "paujla@instock.com"
+              name: '',
+              position: '',
+              phone: '',
+              email: ''
             }
         }
     }
@@ -25,78 +26,58 @@ export default class AddWarehouse extends Component {
             ...this.state,
             [e.target.name]: e.target.value
         })
+
+        console.log(this.state[e.target.name]);
     }
 
     handleContactChange(e){
         this.setState({
             ...this.state,
-            [e.target.name]: e.target.value
+            contact: {
+                ...this.state.contact,
+                [e.target.name]: e.target.value
+            }
         })
+    }
+
+    handleSubmit(e){
+        e.preventDefault()
+    }
+
+    isEmpty(name, contact){
+        let empty
+        if(!contact) !this.state[name]? empty = true : empty = false
+        if(contact)  !this.state.contact[name]? empty = true : empty = false
+        return empty
     }
 
     render() {
         return (
             <div className = 'form'>
-
-                {/* header */}
                 <div className="form__header">
                     <img src={arrow} className = 'form__back-arrow' alt=""/> 
                     <h1 className="form__heading titilliumWeb-Regular">Add New Warehouse</h1>                    
                 </div>
 
-                {/* flex container */}
                 <div className="flex-container">
-
-                    {/* details section */}
                     <div className="form__left-section">
                         <h2 className="form__subheading">Warehouse Details</h2>
-
-                        <div className="form__input-wrapper">
-                            <label htmlFor="name" className="form__label">Warehouse Name</label>
-                            <input type="text" className='form__input'/>
-                        </div>
-
-                        <div className="form__input-wrapper">
-                            <label htmlFor="address" className="form__label">Street Address</label>
-                            <input type="text" className='form__input'/>
-                        </div>
-
-                        <div className="form__input-wrapper">
-                            <label htmlFor="city" className="form__label">City</label>
-                            <input type="text" className='form__input'/>
-                        </div>
-
-                        <div className="form__input-wrapper">
-                            <label htmlFor="country" className="form__label">Country</label>
-                            <input type="text" className='form__input'/>
-                        </div>
+                        <Input name='name'    text='Warehouse Name' empty={this.isEmpty('name')} handleChange={(e)=>this.handleDetailChange(e)}/>
+                        <Input name='address' text='Street Address' empty={this.isEmpty('address')} handleChange={(e)=>this.handleDetailChange(e)}/>
+                        <Input name='city'    text='City' empty={this.isEmpty('city')} handleChange={(e)=>this.handleDetailChange(e)}/>
+                        <Input name='country' text='Country' empty={this.isEmpty('country')} handleChange={(e)=>this.handleDetailChange(e)}/>
                     </div>
 
-                    {/* contact */}
                     <div className="form__right-section">
-                    <h2 className="form__subheading">Warehouse Details</h2>
-
-                        <div className="form__input-wrapper">
-                            <label htmlFor="name" className="form__label">Warehouse Name</label>
-                            <input type="text" data-type='contact' className='form__input'/>
-                        </div>
-
-                        <div className="form__input-wrapper">
-                            <label htmlFor="address" className="form__label">Street Address</label>
-                            <input type="text" data-type='contact' className='form__input'/>
-                        </div>
-
-                        <div className="form__input-wrapper">
-                            <label htmlFor="city" className="form__label">City</label>
-                            <input type="text" data-type='contact' className='form__input'/>
-                        </div>
-
-                        <div className="form__input-wrapper">
-                            <label htmlFor="country" className="form__label">Country</label>
-                            <input type="text" data-type='contact' className='form__input'/>
-                        </div>
+                    <h2 className="form__subheading">Contact</h2>
+                        <Input name='name' text='Contact Name' empty={this.isEmpty('name', true)} handleChange={(e)=>this.handleContactChange(e)} />
+                        <Input name='position' text='Position' empty={this.isEmpty('position', true)}handleChange={(e)=>this.handleContactChange(e)} />
+                        <Input name='phone' text='Phone number' empty={this.isEmpty('phone', true)} handleChange={(e)=>this.handleContactChange(e)} />
+                        <Input name='email' text='Email' empty={this.isEmpty('email', true)}handleChange={(e)=>this.handleContactChange(e)} />
                     </div>
+
                 </div>
+
                 <div className="form__button-container">
                     <button className="form__button">Cancel</button>
                     <button className="form__button">Add Warehouse</button>
