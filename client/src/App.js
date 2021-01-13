@@ -1,9 +1,13 @@
-import logo from './logo.svg';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
+import React from 'react';
 import './App.css';
+import Header from './components/Header/Header';
 
-function App() {
+class App extends React.Component {
+  
+  render(){
   return (
+    <Router>
     <div className="App">
         <Router>
           <Switch>
@@ -18,7 +22,10 @@ function App() {
           </Switch>
         </Router>
     </div>
+    </Router>
+   
   );
+}
 }
 
 export default App;
