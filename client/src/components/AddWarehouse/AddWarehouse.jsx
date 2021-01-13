@@ -53,10 +53,10 @@ export default class AddWarehouse extends Component {
 
     render() {
         return (
-            <div className = 'form'>
+            <div className = 'form titilliumWeb-Regular'>
                 <div className="form__header">
                     <img src={arrow} className = 'form__back-arrow' alt=""/> 
-                    <h1 className="form__heading titilliumWeb-Regular">Add New Warehouse</h1>                    
+                    <h1 className="form__heading">Add New Warehouse</h1>                    
                 </div>
 
                 <div className="flex-container">
@@ -71,9 +71,9 @@ export default class AddWarehouse extends Component {
                     <div className="form__right-section">
                     <h2 className="form__subheading">Contact</h2>
                         <Input name='name' text='Contact Name' empty={this.isEmpty('name', true)} handleChange={(e)=>this.handleContactChange(e)} />
-                        <Input name='position' text='Position' empty={this.isEmpty('position', true)}handleChange={(e)=>this.handleContactChange(e)} />
+                        <Input name='position' text='Position' empty={this.isEmpty('position', true)} handleChange={(e)=>this.handleContactChange(e)} />
                         <Input name='phone' text='Phone number' empty={this.isEmpty('phone', true)} handleChange={(e)=>this.handleContactChange(e)} />
-                        <Input name='email' text='Email' empty={this.isEmpty('email', true)}handleChange={(e)=>this.handleContactChange(e)} />
+                        <Input name='email' text='Email' empty={this.isEmpty('email', true)} handleChange={(e)=>this.handleContactChange(e)} />
                     </div>
 
                 </div>
