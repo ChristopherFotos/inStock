@@ -1,22 +1,22 @@
 @font-face {
-    font-family: 'TitilliumWeb', sans-serif;
+    font-family: 'TitilliumWeb';
     src: url("../assets/fonts/TitilliumWeb-Regular.ttf")  format("truetype");
     font-style: normal;
-    font-weight: 400;
+    font-weight: normal;
 }
 
 .titilliumWeb-Regular {
-    font-family: 'TitilliumWeb', sans-serif;
-    font-weight: regular;
+    font-family: 'TitilliumWeb';
+    font-weight: normal;
 }
 
 @font-face {
-    font-family: 'TitilliumWeb', sans-serif;
+    font-family: 'TitilliumWeb';
     src: url("../assets/fonts/TitilliumWeb-SemiBold.ttf")  format("truetype");
-    font-style: normal;
-    font-weight: 600;
+    font-style: bold;
+    font-weight: bold;
 }
 .titilliumWeb-SemiBold {
     font-family: 'TitilliumWeb', sans-serif;
-    font-weight: SemiBold;
+    font-weight: medium;
 }
