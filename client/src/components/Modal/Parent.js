@@ -26,10 +26,7 @@ class Parent extends React.Component {
           {" "}
           show Modal{" "}</button>
           <Modal onClose={this.showModal} show={this.state.show}>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis
-          deserunt corrupti, ut fugit magni qui quasi nisi amet repellendus non
-          fuga omnis a sed impedit explicabo accusantium nihil doloremque
-          consequuntur.
+          Please confirm that you'd like to delete [the King West] from the list of warehouses. You won't be able to undo this action.
         </Modal>
       </div>
     );

@@ -11,17 +11,22 @@ export default class Modal extends React.Component {
       return null;
     }
     return (
-  <div className="modal">
-      <div className="modal" id="modal">
-        <h1 className="modal__title">Modal Window</h1>
-        <div className="modal__copy">{this.props.children}</div>
-        <div className="modal__but-container">
-          <button className="modal__delete-but" onClick={this.onClose}>
-            close
-          </button>
+      <div className="modal">
+        <div className="modal__container" id="modal">
+         <div className="modal__close-container">
+          <div className="modal__close-but" onClick={this.onClose}><div className="modal__close-x">X</div>
+          </div>
+        </div>
+          <h1 className="modal__title">Delete [King West] warehouse?</h1>
+          <div className="modal__copy">{this.props.children}</div>
+          <div className="modal__but-container">
+              <div className="modal__cancel-but" onClick={this.onClose}>Cancel
+              </div>       
+              <div className="modal__delete-but" onClick={this.onClose}>Delete
+              </div>
+          </div>
         </div>
       </div>
-  </div>
     );
   }
 }
