@@ -14,23 +14,25 @@ const helpers = {
 
     /* takes an object of any depth and returns an array of all empty properties, 
     and all properties called 'phone' or 'email' that contain an invalid phone number 
-    or email address. */
+    or email address.*/
 
     validateProperties: object => {
         let badProperties = []
 
         for(const x in object){
-            // if it's empty, push it into the badProperties array
             object[x] === '' && badProperties.push(x)
-            // if it's called phone or email and ocntains an invalid phone or email push it into badProperties
-            if((x === 'phone' || x === 'email') && !helpers[x](object[x])) badProperties.push(x)
-            // if it's an object, run this function on it and push the return value into badProperties
-            if(typeof(object[x]) === 'object') badProperties.push(...helpers.validateProperties(object[x]))           
-        }
 
+            if((x === 'phone' || x === 'email') && !helpers[x](object[x])){
+                console.log('if')
+                badProperties.push(x)
+            }
+
+            if(typeof(object[x]) === 'object'){
+                badProperties.push(...helpers.validateProperties(object[x]))
+            }            
+        }
         return badProperties
     },
 }
-
 
 module.exports = helpers
