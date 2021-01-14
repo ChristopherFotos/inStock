@@ -6,22 +6,24 @@ const cors      = require('cors')
 const router    = express.Router()
 
 /* import the data */
-const warehouses      = require('../data/warehouses.json')
+const warehouses = require('../data/warehouses.json')
 
-/* get all warehouses */
+/* GET ALL WAREHOUSES */
 router.get('/', (req, res)=>{
     res.json(warehouses)
 })
 
-/* add a new warehouse */
+
+/* ADD NEW WAREHOUSE */
 router.post('/', (req, res)=>{
     const warehouse = req.body
 
-    // check if all properties are filled in and valid
-    if(h.validateProperties(warehouse).length > 0){
+    // check for invalid inputs
+    let invalidProperties = h.validateProperties(warehouse)
+    if(invalidProperties.length > 0){
         res.status(400).json({
-            message:'your request was either missing some information, or included som invalid information',
-            incorrectProperties: h.validateProperties(warehouse)
+            message:'your request was either missing some information, or included some invalid information',
+            incorrectProperties: invalidProperties
         })
     }
 
@@ -34,6 +36,12 @@ router.post('/', (req, res)=>{
     fs.writeFile('./data/warehouses.json', JSON.stringify(warehouses), (err)=>console.log(err))
     let newWarehouse = warehouses.find(w => w.id === id)
     res.json(newWarehouse)
+})
+
+
+/* EDIT A WAREHOUSE */
+router.patch('/', (req,res)=>{
+
 })
 
 module.exports = router

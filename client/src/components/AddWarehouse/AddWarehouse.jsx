@@ -4,7 +4,6 @@ import add from '../../assets/images/Icons/add.svg'
 import helpers from '../../helper-functions'
 import axios from'axios'
 import Input from './Input/Input'
-import { useHistory } from "react-router-dom";
 import './AddWarehouse.scss'
 
 export default class AddWarehouse extends Component {
@@ -42,9 +41,8 @@ export default class AddWarehouse extends Component {
 
     }
 
-    handleSubmit(e){
-        if(helpers.validateProperties(this.state).length > 0) return
-
+    handleSubmit(){
+        if(helpers.validateProperties(this.state).length > 0) return 
         axios.post('http://localhost:8080/warehouses', this.state)
             .then(res=>this.props.history.push(`/warehouse/${res.data.id}`))
     }
@@ -137,7 +135,8 @@ export default class AddWarehouse extends Component {
                     <button className="form__button" 
                         onClick={(e)=>this.handleSubmit(e)}
                     >   
-                        <img src={add} className='plus-icon'/> Add Warehouse
+                        <img src={add} className='plus-icon'/> 
+                        Add Warehouse
                     </button>
                 </div>
             </div>
