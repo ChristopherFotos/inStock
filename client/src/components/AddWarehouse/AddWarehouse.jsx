@@ -3,8 +3,8 @@ import arrow from '../../assets/images/Icons/arrow_back-24px.svg'
 import add from '../../assets/images/Icons/add.svg'
 import helpers from '../../helper-functions'
 import axios from'axios'
-import Input from './Input/Input'
-import './AddWarehouse.scss'
+import Input from '../Input/Input'
+import '../styles/form.scss'
 
 export default class AddWarehouse extends Component {
     constructor(props){
@@ -67,6 +67,7 @@ export default class AddWarehouse extends Component {
                         <h2 className="form__subheading">Warehouse Details</h2>
 
                         <Input 
+                            value = {this.state.name}
                             name='name'    
                             text='Warehouse Name' 
                             empty={this.isEmpty('name')} 
@@ -74,6 +75,7 @@ export default class AddWarehouse extends Component {
                         />
                         
                         <Input 
+                            value = {this.state.address}
                             name='address' 
                             text='Street Address' 
                             empty={this.isEmpty('address')} 
@@ -81,6 +83,7 @@ export default class AddWarehouse extends Component {
                         />
 
                         <Input 
+                            value = {this.state.city}
                             name='city'    
                             text='City' 
                             empty={this.isEmpty('city')} 
@@ -88,6 +91,7 @@ export default class AddWarehouse extends Component {
                         />
 
                         <Input 
+                            value = {this.state.country}
                             name='country' 
                             text='Country' 
                             empty={this.isEmpty('country')} 
@@ -98,6 +102,7 @@ export default class AddWarehouse extends Component {
                     <div className="form__right-section">
                     <h2 className="form__subheading">Contact</h2>
                         <Input 
+                            value = {this.state.contact.name}
                             name='name' 
                             text='Contact Name' 
                             empty={this.isEmpty('name', true)} 
@@ -105,6 +110,7 @@ export default class AddWarehouse extends Component {
                         />
 
                         <Input 
+                            value = {this.state.contact.position}
                             name='position' 
                             text='Position' 
                             empty={this.isEmpty('position', true)} 
@@ -112,6 +118,7 @@ export default class AddWarehouse extends Component {
                         />
 
                         <Input 
+                            value = {this.state.contact.phone}
                             name='phone' 
                             text='Phone number' 
                             empty={this.isEmpty('phone', true)} 
@@ -119,6 +126,7 @@ export default class AddWarehouse extends Component {
                         />
 
                         <Input 
+                            value = {this.state.contact.email}
                             name='email' 
                             text='Email' 
                             empty={this.isEmpty('email', true)} 
