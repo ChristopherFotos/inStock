@@ -7,7 +7,7 @@ import './AddWarehouse.scss'
 
 export default class AddWarehouse extends Component {
     constructor(props){
-        super()
+        super(props)
         this.state = {
             name: '',
             address:'',
