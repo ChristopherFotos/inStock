@@ -8,5 +8,4 @@ router.use(cors())
 const inventories      = require('../data/inventories.json')
 const warehouses      = require('../data/warehouses.json')
 
-
 module.exports = router
