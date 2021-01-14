@@ -1,0 +1,95 @@
+@import '../../partials/_fonts';
+@import '../../partials/_mixins';
+@import '../../partials/_variables';
+
+.form {
+
+    width: 90vw;
+    margin: auto auto;
+    box-shadow: 0px 0px 13px 2px rgba(0,0,0,0.24);
+    border-radius: 8px;
+
+    /* header, heading and subheading*/
+    &__header{
+        border-bottom: 1px solid $cloud;
+        padding: 1.4rem
+    }
+
+    &__heading {
+        font-size: 28px;
+        line-height: 36px;
+    }
+
+    &__back-arrow {
+        display:inline ;
+    }
+
+    &__heading {
+        display:inline ;
+    }
+
+    /* form section */
+    &__left-section{
+        padding: 16px 16px;
+        border-bottom: 1px solid $cloud;
+        @include tablet{
+            border-bottom: none;
+            border-right: 1px solid $cloud;
+            width: 45%;
+        }
+    }
+
+    &__right-section{
+        padding: 16px 16px;
+        @include tablet {
+            width: 45%;
+        }
+    }
+
+    /* inputs and labels */
+    &__input-wrapper{
+        padding: 0.7rem 0;
+    }
+
+    &__input {
+        display: block;
+        outline: none;
+        padding: 0.6rem 0;
+        border: 1px solid $cloud;
+        border-radius: 20px;
+        width: 100%;    
+    }
+
+    /* buttons */
+    &__button-container {
+        background-color: $gray-lt;
+        display: flex;
+        justify-content: space-around;
+        padding: 16px 0;
+        @include tablet{
+            justify-content: flex-end;
+        }
+    }
+
+    &__button {
+        padding: 0.6rem 0;
+        width: 45%;
+        border-radius: 20px;
+        border: none;
+
+        @include tablet {
+            width: auto;
+            padding: 1rem;
+            margin: 0 24px;
+            border-radius: 25px;
+            outline: none;
+        }
+    }
+}
+
+.flex-container {
+    @include tablet{
+        display: flex;
+        padding: 16px;
+    }
+}
