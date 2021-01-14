@@ -13,6 +13,11 @@ router.get('/', (req, res)=>{
     res.json(warehouses)
 })
 
+/* GET A SINGLE WAREHOUSE */
+router.get('/:id', (req,res)=>{
+    const warehouse = warehouses.find(w => w.id === req.params.id)
+    warehouse ? res.json(warehouse) : res.status(404).send("We couldn't find a warehouse with that ID")
+})
 
 /* ADD NEW WAREHOUSE */
 router.post('/', (req, res)=>{
