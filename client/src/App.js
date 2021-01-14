@@ -12,13 +12,13 @@ class App extends React.Component {
         <Router>
           <Switch>
             <Route path="/">
-              <Redirect to="/warehouses"/> //redirects the user to the warehouses list
+              <Redirect to="/warehouses"/>
             </Route>
-            <Route path="/warehouses" /> //displays a list of warehouses
-            <Route path="/inventory" /> //displays a list of inventory
-            <Route path="/warehouse/:id" /> //displays information on a specific warehouse
-            <Route path="/warehouse/:id/inventory" /> //displays a list of a specific warehouse's inventory
-            <Route path="/warehouse/:id/inventory/:itemid" /> //displays a specific item info in a specific warehouse
+            <Route path="/warehouses" />
+            <Route path="/inventory" />
+            <Route path="/warehouse/:id" />
+            <Route path="/warehouse/:id/inventory" />
+            <Route path="/warehouse/:id/inventory/:itemid" />
           </Switch>
         </Router>
     </div>
