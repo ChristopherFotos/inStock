@@ -1,4 +1,4 @@
-import warning from '../../../assets/images/Icons/error-24px.svg'
+import warning from '../../assets/images/Icons/error-24px.svg'
 import React, { Component } from 'react'
 
 export default class Input extends Component {
@@ -34,7 +34,7 @@ export default class Input extends Component {
         ){
             this.setState({
                 ...this.state,
-                invalidEmail: true
+                invalid: true
             })
         } 
 
@@ -45,7 +45,7 @@ export default class Input extends Component {
         ){
             this.setState({
                 ...this.state,
-                invalidEmail: false
+                invalid: false
             })
         } 
     }
@@ -55,11 +55,11 @@ export default class Input extends Component {
             <div className="form__input-wrapper">
                 {this.props.empty}
                 <label htmlFor={this.props.name} className="form__label">{this.props.text}</label>
-                <input onChange={(e)=>{this.handleChange(e)}} name={this.props.name} type="text" className={`form__input ${this.props.empty ? 'form__input--empty' : ''}`}/>
-                {(this.props.empty || this.state.invalidEmail) && 
+                <input onChange={(e)=>{this.handleChange(e)}} name={this.props.name} type="text" value={this.props.value} className={`form__input ${this.props.empty ? 'form__input--empty' : ''}`}/>
+                {(this.props.empty || this.state.invalid) && 
                     <span className="form__validation-span">
                         <img src={warning} alt="" className="form__warning"/>
-                        {this.state.invalidEmail ? `Please provide a valid ${this.props.name}` : 'This field is required'}
+                        {this.state.invalid ? `Please provide a valid ${this.props.name}` : 'This field is required'}
                     </span>
                 }
             </div>

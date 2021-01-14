@@ -45,8 +45,28 @@ router.post('/', (req, res)=>{
 
 
 /* EDIT A WAREHOUSE */
-router.patch('/', (req,res)=>{
+router.patch('/:id', (req,res)=>{
+    // find the warehouse to edit and remove it from the database
+    let id = req.params.id
+    let warehouse = warehouses.find(w => w.id === id)
+    let index = warehouses.indexOf(warehouse)
+    warehouses.splice(index, 1)
 
+    // check for invalid inputs
+    let newWarehouse = req.body
+    let invalidProperties = h.validateProperties(newWarehouse)
+    if(invalidProperties.length > 0){
+        res.status(400).json({
+            message:'your request was either missing some information, or included some invalid information',
+            incorrectProperties: invalidProperties
+        })
+    }
+
+    // push the edited version into the database, write to file and return the edited version
+    warehouses.push(newWarehouse)
+    fs.writeFile('./data/warehouses.json', JSON.stringify(warehouses), (err)=>console.log(err))
+    let newWarehouseinDatabase = warehouses.find(w => w.id === id)
+    res.json(newWarehouseinDatabase)
 })
 
 module.exports = router
