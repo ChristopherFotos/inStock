@@ -1,5 +1,6 @@
 import React from "react";
 import "./Modal.scss";
+import x from "../../images/Icons/close-24px.svg"
 import PropTypes from "prop-types";
 
 export default class Modal extends React.Component {
@@ -14,7 +15,7 @@ export default class Modal extends React.Component {
       <div className="modal">
         <div className="modal__container" id="modal">
          <div className="modal__close-container">
-          <div className="modal__close-but" onClick={this.onClose}><div className="modal__close-x">X</div>
+          <div className="modal__close-but" onClick={this.onClose}><div className="modal__close-x">{x}</div>
           </div>
         </div>
           <h1 className="modal__title">Delete [King West] warehouse?</h1>

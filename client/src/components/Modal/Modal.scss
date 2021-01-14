@@ -19,18 +19,34 @@
     padding: 2rem;
     margin: 0;
     width: 100%;
-    height: 667px;
+    max-height: 667px;
+    max-width: 672px;
 
- 
     @include tablet {
+        position: absolute;
+        left: 5%;
+        right: 5%;
+        top: 20%;
+        min-width: 80vw;
+        max-width: 80vh;
+        height: 30vh;
+        margin: 0 auto;
+        max-height: 262px;
+    //   margin-top: 20vh;
+    //     margin-left: 20vw;
+        // padding-left: 3rem;
+    }
+    @include desktop {
         position: absolute;
         left: 24%;
         right: 24%;
         top: 20%;
+        min-width: 672px;
+        max-width: 40vw;
     //   margin-top: 20vh;
     //     margin-left: 20vw;
-        width: 672px;
-        height: 262px;
+        // height: 262px;
+        // padding-left: 3rem;
     }
 
     &__container {
@@ -40,6 +56,12 @@
         opacity: 10;
         background-color: $white;
         z-index: 1;
+        max-height: 667px;
+
+        @include tablet {
+            height: 262px;
+
+        }
 
   }
 
@@ -57,79 +79,122 @@
     }
 
     &__close-x {
-        width: 100%;
-        color: $black;
-        font-size: 1rem;
-        color: $black;
-        font-weight: 600;
+        width: 24px;
+        height: 24px;
     }
     &__title {
+        display: flex;
         font-weight: 600;
         font-size: 32px;
         line-height: 40px;
         color:$black;
-        width: 100%;
-        // width: 407px;
+        width: 80%;
+        margin: 0px 0px 1rem 0px;
+        padding-bottom: 1rem;
         height: 40px;
-        // position: absolute;
         text-align: left;
+        // position: absolute;
         // top: 225px;
         // left: 368px;
+        @include tablet {
+            width: 100%;
+        }
     }
     &__copy {
-        // position: absolute;
+        display: flex;
         width: 100%;
-        // width: 544px;
         height: 56px;
-        // top: 281px;
-        // left: 368px;
         font-size: 16px;
         line-height: 28px;
         color: $black;
         text-align: left;
+        margin-top: 2rem;
+                // position: absolute;
+               // width: 544px;
+        // top: 281px;
+        // left: 368px;
+
+
+        @include tablet {
+            margin-top: 0px;
+        }
     }
     &__but-container {
         width: 100%;
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        margin-top: 100%;
+        padding-right: 2rem;
+        justify-content: flex-start;
         height: 40px;
         // position: absolute;
         // top: 369px;
         // left: 753px;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        font-size: 12px;
+
+        @include tablet {
+            justify-content: flex-end;
+            margin-left: auto;
+            margin-top: 2rem;
+            width: 40%;
+        }
+        @include desktop {
+            justify-content: flex-end;
+        }
+    }
+
+        @include tablet {
+            justify-content: flex-end;
+            margin-left: auto;
+            width: 40%;
+        }
+        @include desktop {
+            justify-content: flex-end;
+        }
     }
     &__cancel-but {
-        width: 71px;
+        width: 55vw;
         height: 38px;
         display: flex;
-        // position: absolute;
-        // top: 369px;
-        // left: 753px; 
         border-radius: 20px;
-        padding: 8px 16px;
+        align-items: center;
+        justify-content: space-around;
+        padding-bottom: 5px;
         background-color: $white;
         color: $black;
         border: 1px solid $cloud;
         margin-right: 1rem;
+                // position: absolute;
+        // top: 369px;
+        // left: 753px; 
+                // padding: 8px 16px;
+
+        @include tablet {
+            width: 71px; 
+        }
 
     }
 
     &__delete-but {
+        width: 55vw;
         display: flex;
-        width: 71px;
         height: 38px;
-        // position: absolute;
+        border-radius: 20px;
+        align-items: center;
+        justify-content: space-around;
+        padding-bottom: 5px;
+        background-color: $red;
+        color: $white;
+                // position: absolute;
         // top: 369px;
         // left: 841px; 
-        border-radius: 20px;
-        padding: 8px 16px;
-        background-color: red;
-        color: $white;
+
+        @include tablet {
+            width: 71px; 
+        }
     }
 
 
-}
 .modal.off {
     opacity: 0;
     visibility: hidden;
