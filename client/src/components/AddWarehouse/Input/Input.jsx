@@ -1,5 +1,4 @@
 import warning from '../../../assets/images/Icons/error-24px.svg'
-
 import React, { Component } from 'react'
 
 export default class Input extends Component {

@@ -15,6 +15,7 @@ const helpers = {
     /* takes an object of any depth and returns an array of all empty properties, 
     and all properties called 'phone' or 'email' that contain an invalid phone number 
     or email address.*/
+
     validateProperties: object => {
         let badProperties = []
 
@@ -33,6 +34,5 @@ const helpers = {
         return badProperties
     },
 }
-
 
 module.exports = helpers

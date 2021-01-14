@@ -17,6 +17,7 @@ router.get('/', (req, res)=>{
 router.post('/', (req, res)=>{
     const warehouse = req.body
 
+    // check if all properties are filled in and valid
     if(h.validateProperties(warehouse).length > 0){
         res.status(400).json({
             message:'your request was either missing some information, or included som invalid information',
@@ -24,15 +25,15 @@ router.post('/', (req, res)=>{
         })
     }
 
+    // assign an id and push into warehouse array
     let id = uuid()
     warehouse.id = id
     warehouses.push(warehouse)
 
-    fs.writeFile('../data/warehouses.json', warehouses, ()=>1)
+    // write to file and respond with the new warehouse
+    fs.writeFile('./data/warehouses.json', JSON.stringify(warehouses), (err)=>console.log(err))
     let newWarehouse = warehouses.find(w => w.id === id)
     res.json(newWarehouse)
 })
 
-
 module.exports = router
-
