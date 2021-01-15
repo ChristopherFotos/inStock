@@ -22,7 +22,6 @@ border-radius: 3px;
   }
 }
 
-
 .head {
   padding: 0 8.25%;
 
@@ -88,7 +87,7 @@ border-radius: 3px;
       @include tablet {
         margin: 0;
         width: 50%;
-        background-position: 149px 9px;
+        background-position: 135px 9px;
         font-size: .875rem;
         line-height: 22px;
         margin-right: 16px;
@@ -123,4 +122,177 @@ border-radius: 3px;
       }
     }
   }
+}
+
+.column {
+  display: none;
+
+  @include tablet {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    background-color: $gray-lt;
+    margin-top: 24px;
+  }
+
+
+  &__text {
+    @include tablet {
+      font-family: 'TitilliumWeb';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 18px;
+      text-transform: uppercase;
+      color: $slate;
+      margin: 11px 0;
+
+        &--shift {
+          @include tablet {
+            font-family: 'TitilliumWeb';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 18px;
+            text-transform: uppercase;
+            color: $slate;
+            padding-left: 4.56%;
+            margin: 11px 0;
+          }
+        }
+
+        &--push {
+          @include tablet {
+            font-family: 'TitilliumWeb';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 18px;
+            text-transform: uppercase;
+            color: $slate;
+            padding-right: 4.56%;
+            margin: 11px 0;
+        }}
+
+        &-sort {
+          @include tablet {
+            position: absolute;
+            top: 30%;
+            margin-left: 1%;
+            width: 12px;
+            height: 15px;
+          }
+        }
+    }
+  }
+
+}
+
+.list {
+  padding: 0 8.25%;
+
+  @include tablet {
+    padding: 0 4.56%;
+    display: flex;
+    align-items: center;
+  }
+
+  &__border {
+    // border-top: 1px solid $cloud;
+    margin-top: 24px;
+    display: flex;
+
+    @include tablet {
+      width: 100%;
+    }
+    
+  }
+
+  &__square {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      flex-direction: row;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &-header {
+      font-family: 'TitilliumWeb';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 11px;
+      line-height: 16px;
+      text-transform: uppercase;
+      color: $slate;
+      margin: 16px 0 0 0;
+      white-space: nowrap;
+
+      @include tablet {
+        display: none;
+      }
+    }
+
+    &-container {
+      @include tablet {
+        width: 138px;
+        position: relative;
+      }
+    }
+
+    &-chevy {
+      position: absolute;
+      margin-left: 1%;
+      top: 48.5%;
+
+      @include tablet {
+        top: 10.5%;
+      }
+    }
+
+    &-text {
+      font-family: 'TitilliumWeb';
+      font-style: normal;
+      font-weight: normal;
+      font-size: 13px;
+      line-height: 20px;
+      color: $black;
+      margin: 4px 0 0 0;
+      
+      &-address {
+        @include tablet {
+          width: 65%;
+        }
+      }
+
+        &-info {
+          @include tablet {
+            width: 150px;
+          }
+        }
+        &-name {
+          @include tablet {
+            padding: 0 10px;
+          }
+        }
+    }
+
+    &-location {
+      @extend .list__square-text;
+      color: $blue;
+    }
+
+    &-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin: 19px 0 0 0;
+    }
+
+    &-push {
+      margin-right: 24px;
+    }
+  }
+
 }
