@@ -10,10 +10,18 @@ export default class Modal extends React.Component {
         // //   data: ''
             };
     }
-
-    // handleDelete = (e) => {
-  //   data: this.state.data
-  // }
+    componentDidMount(){
+      let id = this.props.match.params.id
+      axios.get(`http://localhost:8080/warehouses/${id}`)
+          .then(res => {
+              this.setState(res.data)
+          })
+  }
+    handleDelete(){
+      let id = this.props.match.params.id
+      axios.delete(`http://localhost:8080/warehouses/${id}`, this.state)
+          .then(res=>this.props.history.splice(`/warehouse/${res.data.id}`))
+  }
 
   showModal = e => {
     this.setState({
@@ -46,7 +54,7 @@ export default class Modal extends React.Component {
                     <div className="modal__cancel-but" id="cancel" onClick={this.onClose}>Cancel
                     </div>       
                     {/* needs a function handleDelete to delete data */}
-                    <div className="modal__delete-but" id="delete" onClick={this.onClose}>Delete
+                    <div className="modal__delete-but" id="delete" onClick={(e)=>this.handleDelete(e)}>Delete
                     </div>
                 </div>
                 </div>
