@@ -8,4 +8,13 @@ router.use(cors())
 const inventories      = require('../data/inventories.json')
 const warehouses      = require('../data/warehouses.json')
 
+router.get('/:id', (req,res)=>{
+    let id = req.params.id
+    let inventory = inventories.filter(i => i.warehouseID === id)
+
+    if(inventory.length < 1) res.status(404).json({error: "We couldn't find any items associated with that warehouse ID"})
+
+    res.json(inventory)
+})
+
 module.exports = router
