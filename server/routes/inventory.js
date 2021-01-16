@@ -51,31 +51,6 @@ router.get('/:id', (req,res)=>{
     inventory ? res.json(inventory) : res.status(404).send("We couldn't find a inventory with that ID")
 })
 
-/* ADD NEW inventory */
-router.post('/', (req, res)=>{
-    const inventory = req.body
-
-    // check for invalid inputs
-    let invalidProperties = h.validateProperties(inventory)
-    if(invalidProperties.length > 0){
-        res.status(400).json({
-            message:'your request was either missing some information, or included some invalid information',
-            incorrectProperties: invalidProperties
-        })
-    }
-
-    // assign an id and push into inventory array
-    let id = uuid()
-    inventory.id = id
-    inventories.push(inventory)
-
-    // write to file and respond with the new inventory
-    fs.writeFile('./data/inventories.json', JSON.stringify(inventories), (err)=>console.log(err))
-    let newWarehouse = inventories.find(i => i.id === id)
-    res.json(newInventory)
-})
-
-
 /* EDIT an inventory */
 router.patch('/:id', (req,res)=>{
     // find the inventory to edit and remove it from the database
