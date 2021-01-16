@@ -18,37 +18,42 @@ router.get('/:id', (req,res)=>{
     res.json(inventory)
 })
 
-/* ADD NEW ITEM */
-router.post('/', (req, res)=>{
-    const item = req.body
-
-    // check for empty inputs
-    let invalidProperties = h.validateProperties(item)
-    if(invalidProperties.length > 0){
-        res.status(400).json({
-            message:'your request was either missing some information, or included some invalid information',
-            invalidProperties: invalidProperties
-        })
-    }
-
-    // assign an id and push into item array
-    let id  = uuid()
-    item.id = id
-    inventories.push(item)
-
-    // write to file and respond with the new item
-    fs.writeFile('./data/inventory.json', JSON.stringify(inventories), (err)=>console.log(err))
-    let newItem = inventories.find(w => w.id === id)
-    res.json(newItem)
+/* copied format from warehouse *?
+/* GET A SINGLE INVENTORY */
+router.get('/:id', (req,res)=>{
+    const inventory = inventories.find(w => i.id === req.params.id)
+    inventory ? res.json(inventory) : res.status(404).send("We couldn't find a inventory with that ID")
 })
-
-module.exports = router
 
 /* copied format from warehouse *?
 /* GET A SINGLE INVENTORY */
 router.get('/:id', (req,res)=>{
     const inventory = inventories.find(w => i.id === req.params.id)
     inventory ? res.json(inventory) : res.status(404).send("We couldn't find a inventory with that ID")
+})
+
+/* ADD NEW inventory */
+router.post('/', (req, res)=>{
+    const inventory = req.body
+
+    // check for invalid inputs
+    let invalidProperties = h.validateProperties(inventory)
+    if(invalidProperties.length > 0){
+        res.status(400).json({
+            message:'your request was either missing some information, or included some invalid information',
+            incorrectProperties: invalidProperties
+        })
+    }
+
+    // assign an id and push into inventory array
+    let id = uuid()
+    inventory.id = id
+    inventories.push(inventory)
+
+    // write to file and respond with the new inventory
+    fs.writeFile('./data/inventories.json', JSON.stringify(inventories), (err)=>console.log(err))
+    let newWarehouse = inventories.find(i => i.id === id)
+    res.json(newInventory)
 })
 
 /* EDIT an inventory */
@@ -86,4 +91,3 @@ router.delete('/:id', (req,res)=>{
     inventories.splice(index, 1)
 })
 module.exports = router
-

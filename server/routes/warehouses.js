@@ -78,4 +78,13 @@ router.delete('/:id', (req,res)=>{
     warehouses.splice(index, 1)
 })
 
+/* DELETE A WAREHOUSE -kv-please check! -only deletes the id */
+router.delete('/:id', (req,res)=>{
+    // find the warehouse to delete and remove it from the database
+    let id = req.params.id
+    let warehouse = warehouses.find(w => w.id === id)
+    let index = warehouses.indexOf(warehouse)
+    warehouses.splice(index, 1)
+})
+
 module.exports = router

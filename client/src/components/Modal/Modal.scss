@@ -9,20 +9,12 @@
   }
   body {
     width: 100%;
-<<<<<<< HEAD
     height: 100vh; 
     background-color: transparent;
     transition: opacity ease-in .2s;
 }
-.modal-backdrop {
-=======
-    height: 100vh;
-    background-color: transparent;
-    transition: opacity ease-in .2s;
-  }
 
   .modal-backdrop {
->>>>>>> a3d8460151cb5ec96ac8cdac7375df691fd0fe78
     height: 667px;
     }
 
@@ -36,17 +28,9 @@
     opacity: 1;
     display: flex;
     flex-direction: column;
-<<<<<<< HEAD
-    flex-direction: column;
-    padding: 1.5rem 2rem;
-    margin: 0;
-    width: 100%;
-    // max-height: 667px;
-=======
     padding: 1.5rem 2rem 4rem 2rem;
     margin: 0;
     width: 100%;
->>>>>>> a3d8460151cb5ec96ac8cdac7375df691fd0fe78
     max-width: 672px;
 
     @include tablet {
@@ -59,9 +43,6 @@
         height: 30vh;
         margin: 0 auto;
         max-height: 262px;
-    //   margin-top: 20vh;
-    //     margin-left: 20vw;
-        // padding-left: 3rem;
     }
     @include desktop {
         position: absolute;
@@ -70,10 +51,6 @@
         top: 20%;
         min-width: 672px;
         max-width: 40vw;
-    //   margin-top: 20vh;
-    //     margin-left: 20vw;
-        // height: 262px;
-        // padding-left: 3rem;
     }
 
     &__container {
@@ -120,9 +97,7 @@
         padding-bottom: 1rem;
         height: 40px;
         text-align: left;
-        // position: absolute;
-        // top: 225px;
-        // left: 368px;
+
         @include tablet {
             width: 100%;
         }
@@ -136,11 +111,6 @@
         color: $black;
         text-align: left;
         margin-top: 2rem;
-                // position: absolute;
-               // width: 544px;
-        // top: 281px;
-        // left: 368px;
-
 
         @include tablet {
             margin-top: 0px;
@@ -155,9 +125,6 @@
         padding-right: 2rem;
         justify-content: flex-start;
         height: 40px;
-        // position: absolute;
-        // top: 369px;
-        // left: 753px;
 
         @include tablet {
             justify-content: flex-end;
@@ -183,10 +150,6 @@
         color: $black;
         border: 1px solid $cloud;
         margin-right: 1rem;
-                // position: absolute;
-        // top: 369px;
-        // left: 753px; 
-                // padding: 8px 16px;
 
         @include tablet {
             width: 71px; 
@@ -204,9 +167,6 @@
         padding-bottom: 5px;
         background-color: $red;
         color: $white;
-                // position: absolute;
-        // top: 369px;
-        // left: 841px; 
 
         @include tablet {
             width: 71px; 
