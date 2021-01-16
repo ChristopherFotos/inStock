@@ -42,8 +42,8 @@ componentDidMount() {
         <h4 className="column__text">CONTACT INFORMATION<img className="column__text-sort" src={sort} alt=""/></h4>
         <h4 className="column__text--push">ACTIONS</h4>
       </div>
-      <div>
-        {this.state.warehouses.map ((warehouse) => <Cardlist
+      <div >
+        {this.state.warehouses.map ((warehouse) => <Cardlist className="background"
           key={warehouse.id} warehouses={warehouse}/>)}
       </div>
     </div>
