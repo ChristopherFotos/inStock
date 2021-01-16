@@ -2,7 +2,7 @@ const express    = require('express')
 const fs         = require('fs')
 const h          = require('../helper-functions')
 const {v4: uuid} = require('uuid');
-const cors      = require('cors')
+const cors      = require('cors');
 const router    = express.Router()
 
 /* import the data */

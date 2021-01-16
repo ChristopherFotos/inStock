@@ -9,12 +9,11 @@
   }
   body {
     width: 100%;
-    height: 100vh;
+    height: 100vh; 
     background-color: transparent;
     transition: opacity ease-in .2s;
-  }
-
-  .modal-backdrop {
+}
+.modal-backdrop {
     height: 667px;
     }
 
@@ -23,6 +22,7 @@
     border-radius: 3px;
     box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
     filter: blur(0);
+    overflow: hidden;
     transform: scale(1);
     opacity: 1;
     display: flex;
@@ -42,9 +42,6 @@
         height: 30vh;
         margin: 0 auto;
         max-height: 262px;
-    //   margin-top: 20vh;
-    //     margin-left: 20vw;
-        // padding-left: 3rem;
     }
     @include desktop {
         position: absolute;
@@ -53,10 +50,6 @@
         top: 20%;
         min-width: 672px;
         max-width: 40vw;
-    //   margin-top: 20vh;
-    //     margin-left: 20vw;
-        // height: 262px;
-        // padding-left: 3rem;
     }
 
     &__container {
@@ -103,9 +96,7 @@
         padding-bottom: 1rem;
         height: 40px;
         text-align: left;
-        // position: absolute;
-        // top: 225px;
-        // left: 368px;
+
         @include tablet {
             width: 100%;
         }
@@ -119,11 +110,6 @@
         color: $black;
         text-align: left;
         margin-top: 2rem;
-                // position: absolute;
-               // width: 544px;
-        // top: 281px;
-        // left: 368px;
-
 
         @include tablet {
             margin-top: 0px;
@@ -138,9 +124,6 @@
         padding-right: 2rem;
         justify-content: flex-start;
         height: 40px;
-        // position: absolute;
-        // top: 369px;
-        // left: 753px;
 
         @include tablet {
             justify-content: flex-end;
@@ -153,14 +136,6 @@
         }
     }
 
-        @include tablet {
-            justify-content: flex-end;
-            margin-left: auto;
-            width: 40%;
-        }
-        @include desktop {
-            justify-content: flex-end;
-        }
     }
     &__cancel-but {
         width: 55vw;
@@ -174,10 +149,6 @@
         color: $black;
         border: 1px solid $cloud;
         margin-right: 1rem;
-                // position: absolute;
-        // top: 369px;
-        // left: 753px; 
-                // padding: 8px 16px;
 
         @include tablet {
             width: 71px; 
@@ -195,15 +166,15 @@
         padding-bottom: 5px;
         background-color: $red;
         color: $white;
-                // position: absolute;
-        // top: 369px;
-        // left: 841px; 
 
         @include tablet {
             width: 71px; 
         }
     }
 
+.modal-form {
+    background-color: transparent;
+}
 
 .modal.off {
     opacity: 0;
