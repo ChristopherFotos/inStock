@@ -151,8 +151,7 @@ export default class AddWarehouse extends Component {
                     <button className="form__button" 
                         onClick={(e)=>this.handleSubmit(e)}
                     >   
-                        <img src={add} className='plus-icon'/> 
-                        Add Warehouse
+                        Save
                     </button>
                 </div>
             </div>
