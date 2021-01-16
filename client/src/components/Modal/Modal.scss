@@ -9,11 +9,20 @@
   }
   body {
     width: 100%;
+<<<<<<< HEAD
     height: 100vh; 
     background-color: transparent;
     transition: opacity ease-in .2s;
 }
 .modal-backdrop {
+=======
+    height: 100vh;
+    background-color: transparent;
+    transition: opacity ease-in .2s;
+  }
+
+  .modal-backdrop {
+>>>>>>> a3d8460151cb5ec96ac8cdac7375df691fd0fe78
     height: 667px;
     }
 
@@ -27,11 +36,17 @@
     opacity: 1;
     display: flex;
     flex-direction: column;
+<<<<<<< HEAD
     flex-direction: column;
     padding: 1.5rem 2rem;
     margin: 0;
     width: 100%;
     // max-height: 667px;
+=======
+    padding: 1.5rem 2rem 4rem 2rem;
+    margin: 0;
+    width: 100%;
+>>>>>>> a3d8460151cb5ec96ac8cdac7375df691fd0fe78
     max-width: 672px;
 
     @include tablet {
@@ -136,7 +151,7 @@
         display: flex;
         align-items: center;
         font-size: 12px;
-        margin-top: 100%;
+        margin-top: 80%;
         padding-right: 2rem;
         justify-content: flex-start;
         height: 40px;
