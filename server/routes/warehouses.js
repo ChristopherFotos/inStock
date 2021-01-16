@@ -69,4 +69,6 @@ router.patch('/:id', (req,res)=>{
     res.json(newWarehouseinDatabase)
 })
 
+
+
 module.exports = router

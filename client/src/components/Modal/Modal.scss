@@ -1,5 +1,5 @@
-@import '../../partials/__variables.scss';
-@import '../../partials/__mixins.scss';
+@import '../../partials/variables.scss';
+@import '../../partials/mixins.scss';
 
 /* Box-sizing border-box */
 * {
@@ -60,6 +60,49 @@
         // height: 262px;
         // padding-left: 3rem;
     }
+
+    &__cancel-but {
+        width: 55vw;
+        height: 38px;
+        display: flex;
+        border-radius: 20px;
+        align-items: center;
+        justify-content: space-around;
+        padding-bottom: 5px;
+        background-color: $white;
+        color: $black;
+        border: 1px solid $cloud;
+        margin-right: 1rem;
+                // position: absolute;
+        // top: 369px;
+        // left: 753px; 
+                // padding: 8px 16px;
+
+        @include tablet {
+            width: 71px; 
+        }
+
+    }
+
+    &__delete-but {
+        width: 55vw;
+        display: flex;
+        height: 38px;
+        border-radius: 20px;
+        align-items: center;
+        justify-content: space-around;
+        padding-bottom: 5px;
+        background-color: $red;
+        color: $white;
+                // position: absolute;
+        // top: 369px;
+        // left: 841px; 
+
+        @include tablet {
+            width: 71px; 
+        }
+    }
+
 
     &__container {
         display: flex;
@@ -156,47 +199,7 @@
     }
 
     }
-    &__cancel-but {
-        width: 55vw;
-        height: 38px;
-        display: flex;
-        border-radius: 20px;
-        align-items: center;
-        justify-content: space-around;
-        padding-bottom: 5px;
-        background-color: $white;
-        color: $black;
-        border: 1px solid $cloud;
-        margin-right: 1rem;
-                // position: absolute;
-        // top: 369px;
-        // left: 753px; 
-                // padding: 8px 16px;
-
-        @include tablet {
-            width: 71px; 
-        }
-
-    }
-
-    &__delete-but {
-        width: 55vw;
-        display: flex;
-        height: 38px;
-        border-radius: 20px;
-        align-items: center;
-        justify-content: space-around;
-        padding-bottom: 5px;
-        background-color: $red;
-        color: $white;
-                // position: absolute;
-        // top: 369px;
-        // left: 841px; 
-
-        @include tablet {
-            width: 71px; 
-        }
-    }
+    
 
 .modal-form {
     background-color: transparent;
