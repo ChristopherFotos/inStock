@@ -81,7 +81,14 @@ body{
 
 .foot {
   background-color: $gray-lt;
-  
+  display:flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 125vh;
+  @include tablet {
+    height: 80vh;
+  }
+
     &__copyright {
       display: flex;
       font-family: 'TitilliumWeb';
@@ -89,7 +96,6 @@ body{
       font-weight: normal;
       font-size: .6875rem;
       line-height: 16px;
-      padding: 490px 0 40px 0;
       margin: 0;
       color: $slate;
       text-align: center;
