@@ -9,7 +9,7 @@ function Cardlist({warehouses}) {
   let {name, address, city, country} = warehouses;
 
   return (
-    <div>
+    <div className="background">
       <section className="list">
         <div className='list__border'>
           <div className="list__square">
