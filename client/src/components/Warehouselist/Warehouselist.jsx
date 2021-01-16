@@ -29,7 +29,7 @@ componentDidMount() {
             <h1 className="head__box-main">Warehouses</h1>
             <div className="head__container">
               <input className="head__container-search" type="text" placeholder="Search..."/>
-              <Link to="/addnewwarehouse">
+              <Link to="/warehouses/add">
                 <button className="head__container-click"> + Add New Warehouse </button>
               </Link>
             </div>
@@ -43,7 +43,7 @@ componentDidMount() {
         <h4 className="column__text--push">ACTIONS</h4>
       </div>
       <div >
-        {this.state.warehouses.map ((warehouse) => <Cardlist className="background"
+        {this.state.warehouses.map ((warehouse) => <Cardlist 
           key={warehouse.id} warehouses={warehouse}/>)}
       </div>
     </div>
