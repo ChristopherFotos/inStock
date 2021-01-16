@@ -1,4 +1,4 @@
-@import "../../partials/_general";
+@import "../../partials/general";
 
 .card {
 position: absolute;
@@ -214,9 +214,9 @@ border-radius: 3px;
 
     @include tablet {
       flex-direction: row;
-      width: 100%;
+      width: 40%;
       align-items: center;
-      justify-content: space-between;
+      
     }
 
     &-header {
@@ -263,7 +263,7 @@ border-radius: 3px;
       
       &-address {
         @include tablet {
-          width: 65%;
+          width: 45%;
         }
       }
 
@@ -274,7 +274,8 @@ border-radius: 3px;
         }
         &-name {
           @include tablet {
-            padding: 0 10px;
+            padding: 0 48px 0 39px;
+            width: 100px;
           }
         }
     }
@@ -286,8 +287,9 @@ border-radius: 3px;
 
     &-buttons {
       display: flex;
-      justify-content: space-between;
+      width: 15%;
       margin: 19px 0 0 0;
+      padding-left: 15px;
     }
 
     &-push {
