@@ -1,0 +1,110 @@
+@import '../../partials/_fonts';
+@import '../../partials/_mixins';
+@import '../../partials/_variables';
+
+.warehouse-details {
+    position: absolute;
+    top:25%;
+    // display:flex;
+    background: white;
+    
+    /*======================
+           TOP SECTION
+    ======================== */
+    &__header{
+        padding: 16px 0;
+        width: 100vw;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid $cloud;
+    }
+    &__button{
+        margin-right: 8px;
+        border:none;
+        display: flex;
+        padding: 0.8rem;
+        background-color: $blue;
+        clip-path: circle();
+        @include tablet {
+            clip-path: none;
+            border-radius: 20px;
+            padding: 0.5rem 1.2rem;
+            display: inline;
+            color: white;
+            font-family: 'TitilliumWeb';
+        }
+    }
+
+    &__button-text{
+        display:none;
+        @include tablet {
+            display: inline;
+            font-size: 14px
+        }
+        
+    }
+
+    /*===============
+           BODY 
+    =================*/
+    &__body {
+        background-color: white;
+        padding: 16px 24px;
+        @include tablet{
+            height: 140px;
+            display:flex;
+        }
+    }
+
+    &__contact{
+        display: flex;
+        width: 100%;
+        justify-content: flex-start;
+
+        @include tablet {
+            height: 80%;
+            padding: 0 24px 0 16px;
+            margin: auto 0;
+        }
+
+        @include desktop {
+            padding: 0 15% 0 16px;
+        }
+    }
+
+    &__contact-name {
+        width: 40%
+    }
+
+
+    &__address {
+        width: 50%;
+        @include tablet {
+            height: 80%;
+            border-right: 1px solid $cloud;
+            margin: auto 0;
+        }
+    }
+
+    &__subheading {
+        font-size: 14px;
+        color: $slate;
+        font-family: 'TitilliumWeb';
+        
+    }
+
+    &__p {
+        font-family: 'TitilliumWeb';
+        margin: 0
+    }
+}
+
+.edit-icon {
+    display: inline;
+    width: 13px;
+    margin-right: 4px
+}
+
+.wrapper {
+    background-color: white;
+}
