@@ -1,5 +1,6 @@
 const express    = require('express')
 const fs         = require('fs')
+const h          = require('../helper-functions')
 const {v4: uuid} = require('uuid');
 const cors      = require('cors')
 const router    = express.Router()
@@ -15,6 +16,13 @@ router.get('/:id', (req,res)=>{
     if(inventory.length < 1) res.status(404).json({error: "We couldn't find any items associated with that inventory ID"})
 
     res.json(inventory)
+})
+
+/* copied format from warehouse *?
+/* GET A SINGLE INVENTORY */
+router.get('/:id', (req,res)=>{
+    const inventory = inventories.find(w => i.id === req.params.id)
+    inventory ? res.json(inventory) : res.status(404).send("We couldn't find a inventory with that ID")
 })
 
 /* copied format from warehouse *?
@@ -47,7 +55,6 @@ router.post('/', (req, res)=>{
     let newWarehouse = inventories.find(i => i.id === id)
     res.json(newInventory)
 })
-
 
 /* EDIT an inventory */
 router.patch('/:id', (req,res)=>{

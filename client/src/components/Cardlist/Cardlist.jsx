@@ -40,7 +40,7 @@ function Cardlist({warehouses}) {
         </div>
         
         <div className="list__square-buttons">
-          <Link to=''><img className="list__square-push" src={Delete} alt="delete icon"/></Link>
+          <Link to=''><img className="list__square-push" src={Delete}  alt="delete icon"/></Link>
           <Link to=''><img src={edit} alt="edit icon"/></Link>
         </div>
       </section>
