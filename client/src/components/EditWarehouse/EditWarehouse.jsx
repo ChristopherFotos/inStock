@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import arrow from '../../assets/images/Icons/arrow_back-24px.svg'
 import add from '../../assets/images/Icons/add.svg'
+import {Link} from 'react-router-dom'
 import helpers from '../../helper-functions'
 import axios from'axios'
 import Input from '../Input/Input'
@@ -66,7 +67,11 @@ export default class AddWarehouse extends Component {
         return (
             <div className = 'form titilliumWeb-Regular'>
                 <div className="form__header">
+
+                    <Link to='/' className='back'>
                     <img src={arrow} className = 'form__back-arrow' alt=""/> 
+                    </Link>
+                    
                     <h1 className="form__heading">Edit Warehouse</h1>                    
                 </div>
 
