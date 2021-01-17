@@ -23,7 +23,6 @@ showModal = e => {
     modalName: e.target.dataset.name,
     modalId: e.target.dataset.id,
   });
-  document.body.style.overflowY='hidden'
 };
 
 closeModal = () => {

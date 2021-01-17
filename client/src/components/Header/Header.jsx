@@ -19,10 +19,6 @@ function Header() {
             </div>
         </div>
       </nav>
-
-      <footer className="foot">
-      <p className="foot__copyright">© InStock Inc. All Rights Reserved.</p>
-      </footer> 
     </div>
   )
 };

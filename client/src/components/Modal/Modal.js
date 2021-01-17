@@ -1,30 +1,31 @@
 import React from "react";
 import "./Modal.scss";
 import axios from 'axios';
-import x from "../../images/Icons/close-24px.svg"
+import close from '../../assets/images/Icons/close-24px.svg';
 
 
-function Modal({info}) {
-
-    componentDidMount(){
-      axios.get(`http://localhost:8080/warehouses/${this.props.info.id}`, this.state)
-
-  }
+class Modal extends React.Component {
+  constructor(props) {
+    super(props);
+          
+    }
   handleDelete(){
-    axios.delete(`http://localhost:8080/warehouses/${this.props.info.id}`, this.state)
+    axios.delete(`http://localhost:8080/warehouses/${this.props.info.id}`)  
 }
- 
-  onClose = e => {
-    this.props.onClose && this.props.onClose(e);
+  showModal = e => {
+    this.setState({
+      show: !this.state.show
+    });
   };
-
+ 
+    render () {
     return (
       <div className="modal-backdrop">
           <div className="modal">
               <form method="DELETE" id="delete_warehouse" className="modal-form">
                 <div className="modal__container" id="modal">
                   <div className="modal__close-container">
-                      <div className="modal__close-but" onClick={this.props.close}><div className="modal__close-x">X
+                      <div className="modal__close-but" onClick={this.props.close}><div className="modal__close-x">{close}
                       </div>
                   </div>
                 </div>
@@ -45,5 +46,6 @@ function Modal({info}) {
       </div>
     );
   }
+}
 
 export default Modal;
