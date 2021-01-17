@@ -12,11 +12,11 @@ router.use(cors());
 const inventories = require('../data/inventories.json');
 const warehouses = require('../data/warehouses.json');
 
-// router.route('/')
-//     .get((req,res) => {
-//         console.log("ROUTE YES");
-//         res.json(inventories)
-//     })
+router.route('/')
+    .get((req,res) => {
+        console.log("ROUTE YES");
+        res.json(inventories)
+    })
 
 router.get('/:id', (req,res)=>{
     let id = req.params.id
@@ -27,23 +27,24 @@ router.get('/:id', (req,res)=>{
     res.json(inventory)
 })
 
-/* GET ALL INVENTORY */
-router.get('/', (req, res) => {
-    console.log(inventories)
-    res.status(200).json(inventories)
+
+/* GET INVENTORY FOR A SINLGE WAREHOUSE*/
+router.get('/warehouse/:id', (req, res)=> {
+    let inv = inventories.filter(i => i.warehouseID === req.params.id)
+    inv.length > 0 ? res.status(200).json(inv) : res.sendStatus(400, 'No inventory associated with that warehouse ID')
 })
 
-/* copied format from warehouse */
+/* copied format from warehouse *?
 /* GET A SINGLE INVENTORY */
 router.get('/:id', (req,res)=>{
-    const inventory = inventories.find(w => i.id === req.params.id)
+    const inventory = inventories.find(i => i.id === req.params.id)
     inventory ? res.json(inventory) : res.status(404).send("We couldn't find a inventory with that ID")
 })
 
-/* copied format from warehouse */
+/* copied format from warehouse *?
 /* GET A SINGLE INVENTORY */
 router.get('/:id', (req,res)=>{
-    const inventory = inventories.find(w => i.id === req.params.id)
+    const inventory = inventories.find(i => i.id === req.params.id)
     inventory ? res.json(inventory) : res.status(404).send("We couldn't find a inventory with that ID")
 })
 
@@ -67,7 +68,7 @@ router.post('/', (req, res)=>{
 
     // write to file and respond with the new inventory
     fs.writeFile('./data/inventories.json', JSON.stringify(inventories), (err)=>console.log(err))
-    let newInventory = inventories.find(i => i.id === id)
+    let newWarehouse = inventories.find(i => i.id === id)
     res.json(newInventory)
 })
 
