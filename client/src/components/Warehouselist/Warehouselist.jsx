@@ -13,7 +13,6 @@ class Warehouselist extends React.Component {
 state = {
   warehouses:[],
   show: false,  
-  modalProps: null
 };
 
 showModal = e => {
@@ -36,7 +35,15 @@ componentDidMount() {
   axios.get(url)
   .then(res => {
     this.setState({warehouses: res.data})
-    console.log(res.data)
+  })
+  .catch (err => {
+    console.log(err, 'there was an error')
+  })
+}
+ getNewWarehouseList = () => {
+  axios.get (url)
+  .then(res => {
+    this.setState({warehouses: res.data, show: false})
   })
 }
 
@@ -65,7 +72,7 @@ componentDidMount() {
         {this.state.warehouses.map ((warehouse) => <Cardlist showModal={(e) => this.showModal(e)}
           key={warehouse.id} warehouses={warehouse}/>)}
       </div>
-     {this.state.show && <Modal  name={this.state.modalName} id={this.state.modalId} show={this.state.show} close={() => this.closeModal()}/>}
+     {this.state.show && <Modal  name={this.state.modalName} id={this.state.modalId} show={this.state.show} close={() => this.closeModal()} makeRequest={() => this.getNewWarehouseList()}/>}
         
     </div>
   )
