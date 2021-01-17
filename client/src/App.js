@@ -4,6 +4,7 @@ import AddWarehouse from './components/AddWarehouse/AddWarehouse'
 import EditWarehouse from './components/EditWarehouse/EditWarehouse'
 import './App.css';
 import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 import Warehouselist from './components/Warehouselist/Warehouselist';
 import WarehouseDetails from './components/WarehouseDetails/WarehouseDetails'
 
@@ -13,17 +14,18 @@ class App extends React.Component {
   return (
     <Router>
     <div className="App">
-              <Header/>
-          <Switch>
-            <Route path='/' exact render={(routerProps) => <Warehouselist {...routerProps}/>}/>            
-            <Route path="/warehouses" exact/> //displays a list of warehouses
-            <Route path="/warehouses/add" component={AddWarehouse}/> //displays a list of warehouses
-            <Route path="/inventory" /> //displays a list of inventory
-            <Route path="/warehouse/:id" exact component={WarehouseDetails}/> //displays information on a specific warehouse
-            <Route path="/warehouse/:id/edit" component={EditWarehouse}/> //displays the form to edit a particular warehouse
-            <Route path="/warehouse/:id/inventory" /> //displays a list of a specific warehouse's inventory
-            <Route path="/warehouse/:id/inventory/:itemid" /> //displays a specific item info in a specific warehouse
-          </Switch>
+          <Header/>
+            <Switch>
+              <Route path='/' exact render={(routerProps) => <Warehouselist {...routerProps}/>}/>            
+              <Route path="/warehouses" exact/> //displays a list of warehouses
+              <Route path="/warehouses/add" component={AddWarehouse}/> //displays a list of warehouses
+              <Route path="/inventory" /> //displays a list of inventory
+              <Route path="/warehouse/:id" exact component={WarehouseDetails}/> //displays information on a specific warehouse
+              <Route path="/warehouse/:id/edit" component={EditWarehouse}/> //displays the form to edit a particular warehouse
+              <Route path="/warehouse/:id/inventory" /> //displays a list of a specific warehouse's inventory
+              <Route path="/warehouse/:id/inventory/:itemid" /> //displays a specific item info in a specific warehouse
+            </Switch>
+          <Footer/>
     </div>
     </Router>
 

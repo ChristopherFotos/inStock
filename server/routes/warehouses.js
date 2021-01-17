@@ -87,4 +87,6 @@ router.delete('/:id', (req,res)=>{
     warehouses.splice(index, 1)
 })
 
+
+
 module.exports = router

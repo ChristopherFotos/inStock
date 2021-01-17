@@ -5,8 +5,8 @@ import edit from '../../assets/images/Icons/edit-24px.svg';
 import chevron from '../../assets/images/Icons/chevron_right-24px.svg';
 import {Link} from 'react-router-dom'
 
-function Cardlist({warehouses}) {
-  let {name, address, city, country} = warehouses;
+function Cardlist(props) {
+  let {name, address, city, country, id} = props.warehouses;
 
   return (
     <div className="background">
@@ -30,18 +30,18 @@ function Cardlist({warehouses}) {
           <div className="list__square">
             <div>
               <h4 className="list__square-header">CONTACT NAME</h4>
-              <p className="list__square-text list__square-text-name">{warehouses.contact.name}</p>
+              <p className="list__square-text list__square-text-name">{props.warehouses.contact.name}</p>
             </div>
             <div>
               <h4 className="list__square-header">CONTACT INFORMATION</h4>
-              <p className="list__square-text list__square-text-info"> {warehouses.contact.phone} {warehouses.contact.email}</p>
+              <p className="list__square-text list__square-text-info"> {props.warehouses.contact.phone} {props.warehouses.contact.email}</p>
             </div>
           </div>
         </div>
         
         <div className="list__square-buttons">
-          <Link to=''><img className="list__square-push" src={Delete}  alt="delete icon"/></Link>
-          <Link to=''><img src={edit} alt="edit icon"/></Link>
+         <img className="list__square-push" data-name={name} data-id={id} onClick= {props.showModal} src={Delete} alt="delete icon"/>
+          <Link to='/warehouse/:id/edit'><img src={edit} alt="edit icon"/></Link>
         </div>
       </section>
     </div>
