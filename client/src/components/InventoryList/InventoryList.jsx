@@ -3,13 +3,13 @@ import './inventoryList.scss'
 import axios from 'axios';
 
 import SortButtons from '../SortButtons/SortButtons';
-import CardList from '../CardList/CardList';
+import InvCardList from '../InvCardList/InvCardList';
 
 export class InventoryList extends Component {
     constructor() {
         super();
         this.state = {
-            items: [item1, item2, item3],
+            items: [],
         }
     }
 
@@ -74,10 +74,7 @@ export class InventoryList extends Component {
                     </div>
                 </div>
 
-                {/* <InventoryListCard item={item1} />
-                <InventoryListCard item={item2} />
-                <InventoryListCard item={item3} /> */}
-                <CardList items={this.state.items} />
+                <InvCardList items={this.state.items} />
             </div>
         )
     }
