@@ -27,17 +27,24 @@ router.get('/:id', (req,res)=>{
     res.json(inventory)
 })
 
+
+/* GET INVENTORY FOR A SINLGE WAREHOUSE*/
+router.get('/warehouse/:id', (req, res)=> {
+    let inv = inventories.filter(i => i.warehouseID === req.params.id)
+    inv.length > 0 ? res.status(200).json(inv) : res.sendStatus(400, 'No inventory associated with that warehouse ID')
+})
+
 /* copied format from warehouse *?
 /* GET A SINGLE INVENTORY */
 router.get('/:id', (req,res)=>{
-    const inventory = inventories.find(w => i.id === req.params.id)
+    const inventory = inventories.find(i => i.id === req.params.id)
     inventory ? res.json(inventory) : res.status(404).send("We couldn't find a inventory with that ID")
 })
 
 /* copied format from warehouse *?
 /* GET A SINGLE INVENTORY */
 router.get('/:id', (req,res)=>{
-    const inventory = inventories.find(w => i.id === req.params.id)
+    const inventory = inventories.find(i => i.id === req.params.id)
     inventory ? res.json(inventory) : res.status(404).send("We couldn't find a inventory with that ID")
 })
 
