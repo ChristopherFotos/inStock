@@ -1,3 +1,5 @@
+@import './fonts';
+
 // colors: primary
 $black: #13182C;
 $white: #FFFFFF;
@@ -17,7 +19,7 @@ $red: #C94515;
 
 // font
 $font-face: '.titilliumWeb-Regular';
-$font-face: '.titilliumWeb-SemiBold';
+$font-bold: '.titilliumWeb-SemiBold';
 
 // devices
 $mobile-breakpoint: 320px;
