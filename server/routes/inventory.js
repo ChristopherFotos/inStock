@@ -70,6 +70,7 @@ router.patch('/:id', (req,res)=>{
     // find the inventory to edit and remove it from the database
     let id = req.params.id
     let inventory = inventories.find(i => i.id === id)
+    !inventory && res.status(404).send('item does not exist')
     let index = inventories.indexOf(inventory)
     inventories.splice(index, 1)
 
@@ -84,10 +85,17 @@ router.patch('/:id', (req,res)=>{
     }
 
     // push the edited version into the database, write to file and return the edited version
-    inventorys.push(newInventory)
-    fs.writeFile('./data/inventories.json', JSON.stringify(inventories), (err)=>console.log(err))
-    let newInventoryinDatabase = inventories.find(i => i.id === id)
-    res.json(newInventoryinDatabase)
+    inventories.push(newInventory)
+    
+    fs.writeFile('./data/inventories.json', JSON.stringify(inventories), (err)=>{
+        if(err) console.log(err)
+
+        let newInventoryinDatabase = inventories.find(i => i.id === req.params.id)
+        console.log('NEW INV: ', newInventoryinDatabase)
+        inventories.push(newInventory)
+        res.json(newInventoryinDatabase)
+    })
+
 })
 
 
