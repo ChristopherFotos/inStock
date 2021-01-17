@@ -5,9 +5,13 @@
   display:flex;
   align-items: flex-end;
   justify-content: center;
-  height: 125vh;
+  margin: 40px 0;
   @include tablet {
-    height: 80vh;
+    margin: 70px 0 40px 0;
+  }
+
+  @include desktop {
+    margin: 95px 0 48px 0;
   }
 
     &__copyright {
