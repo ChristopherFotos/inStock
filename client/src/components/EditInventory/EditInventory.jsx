@@ -1,32 +1,31 @@
 import React, { Component } from 'react'
 import arrow from '../../assets/images/Icons/arrow_back-24px.svg'
 import add from '../../assets/images/Icons/add.svg'
-import {Link} from 'react-router-dom'
 import helpers from '../../helper-functions'
 import axios from'axios'
 import Input from '../Input/Input'
+import './EditInventory.scss'
+import '../EditWarehouse/EditWarehouse.scss'
 import '../styles/form.scss'
 
-export default class AddWarehouse extends Component {
+export default class EditInventory extends Component {
     constructor(props){
         super(props)
         this.state = {
-            name: '',
-            address:'',
-            city: '',
-            country: '',
-            contact: {
-              name: '',
-              position: '',
-              phone: '',
-              email: ''
-            }
+            id: '',
+            warehouseID: '',
+            warehouseName: '',
+            itemName: '',
+            description: '',
+            category: '',
+            status: '',
+            quantity: ''
         }
     }
 
     componentDidMount(){
         let id = this.props.match.params.id
-        axios.get(`http://localhost:8080/warehouses/${id}`)
+        axios.get(`http://localhost:8080/inventories/${id}`)
             .then(res => {
                 this.setState(res.data)
             })
@@ -52,8 +51,8 @@ export default class AddWarehouse extends Component {
     handleSubmit(){
         let id = this.props.match.params.id
         if(helpers.validateProperties(this.state).length > 0) return 
-        axios.patch(`http://localhost:8080/warehouses/${id}`, this.state)
-            .then(res=>this.props.history.push(`/warehouse/${res.data.id}`))
+        axios.patch(`http://localhost:8080/inventories/${id}`, this.state)
+            .then(res=>this.props.history.push(`/inventory/${res.data.id}`))
     }
 
     isEmpty(name, contact){
@@ -67,82 +66,61 @@ export default class AddWarehouse extends Component {
         return (
             <div className = 'form titilliumWeb-Regular'>
                 <div className="form__header">
-
-                    <Link to='/' className='back'>
                     <img src={arrow} className = 'form__back-arrow' alt=""/> 
-                    </Link>
-                    
-                    <h1 className="form__heading">Edit Warehouse</h1>                    
+                    <h1 className="form__heading">Edit Inventory Item</h1>                    
                 </div>
 
                 <div className="flex-container">
                     <div className="form__left-section">
-                        <h2 className="form__subheading">Warehouse Details</h2>
+                        <h2 className="form__subheading">Item Details</h2>
 
                         <Input 
-                            value = {this.state.name}
-                            name='name'    
-                            text='Warehouse Name' 
-                            empty={this.isEmpty('name')} 
+                            value = {this.state.itemName}
+                            name='itemName'    
+                            text='Inventory Name' 
+                            empty={this.isEmpty('itemName')} 
                             handleChange={(e)=>this.handleDetailChange(e)}
                         />
                         
                         <Input 
-                            value = {this.state.address}
-                            name='address' 
-                            text='Street Address' 
-                            empty={this.isEmpty('address')} 
+                            value = {this.state.description}
+                            name='description' 
+                            text='Description' 
+                            empty={this.isEmpty('description')} 
                             handleChange={(e)=>this.handleDetailChange(e)}
                         />
 
                         <Input 
-                            value = {this.state.city}
-                            name='city'    
-                            text='City' 
-                            empty={this.isEmpty('city')} 
-                            handleChange={(e)=>this.handleDetailChange(e)}
-                        />
-
-                        <Input 
-                            value = {this.state.country}
-                            name='country' 
-                            text='Country' 
-                            empty={this.isEmpty('country')} 
+                            value = {this.state.category}
+                            name='category'    
+                            text='Category' 
+                            empty={this.isEmpty('category')} 
                             handleChange={(e)=>this.handleDetailChange(e)}
                         />
                     </div>
 
                     <div className="form__right-section">
-                    <h2 className="form__subheading">Contact</h2>
+                    <h2 className="form__subheading">Item Availability</h2>
                         <Input 
-                            value = {this.state.contact.name}
-                            name='name' 
-                            text='Contact Name' 
-                            empty={this.isEmpty('name', true)} 
+                            value = {this.state.contact.status}
+                            name='status' 
+                            text='Status' 
+                            empty={this.isEmpty('status', true)} 
+                            handleChange={(e)=>this.handleContactChange(e)} 
+                        />
+                        <Input 
+                            value = {this.state.contact.quantity}
+                            name='quantity' 
+                            text='Quantity' 
+                            empty={this.isEmpty('quantity', true)} 
                             handleChange={(e)=>this.handleContactChange(e)} 
                         />
 
                         <Input 
-                            value = {this.state.contact.position}
-                            name='position' 
-                            text='Position' 
-                            empty={this.isEmpty('position', true)} 
-                            handleChange={(e)=>this.handleContactChange(e)} 
-                        />
-
-                        <Input 
-                            value = {this.state.contact.phone}
-                            name='phone' 
-                            text='Phone number' 
-                            empty={this.isEmpty('phone', true)} 
-                            handleChange={(e)=>this.handleContactChange(e)} 
-                        />
-
-                        <Input 
-                            value = {this.state.contact.email}
-                            name='email' 
-                            text='Email' 
-                            empty={this.isEmpty('email', true)} 
+                            value = {this.state.contact.warehouse}
+                            name='warehouse' 
+                            text='Warehouse' 
+                            empty={this.isEmpty('warehouse', true)} 
                             handleChange={(e)=>this.handleContactChange(e)} 
                         />
                     </div>
@@ -156,7 +134,8 @@ export default class AddWarehouse extends Component {
                     <button className="form__button" 
                         onClick={(e)=>this.handleSubmit(e)}
                     >   
-                        Save
+                        <img src={add} className='plus-icon'/> 
+                        Add Item
                     </button>
                 </div>
             </div>

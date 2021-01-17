@@ -10,13 +10,13 @@ const warehouses = require('../data/warehouses.json')
 
 /* GET ALL WAREHOUSES */
 router.get('/', (req, res)=>{
-    res.json(warehouses)
+    res.status(200).json(warehouses)
 })
 
 /* GET A SINGLE WAREHOUSE */
 router.get('/:id', (req,res)=>{
     const warehouse = warehouses.find(w => w.id === req.params.id)
-    warehouse ? res.json(warehouse) : res.status(404).send("We couldn't find a warehouse with that ID")
+    warehouse ? res.status(200).json(warehouse) : res.status(404).send("We couldn't find a warehouse with that ID")
 })
 
 /* ADD NEW WAREHOUSE */
@@ -40,7 +40,7 @@ router.post('/', (req, res)=>{
     // write to file and respond with the new warehouse
     fs.writeFile('./data/warehouses.json', JSON.stringify(warehouses), (err)=>console.log(err))
     let newWarehouse = warehouses.find(w => w.id === id)
-    res.json(newWarehouse)
+    res.status(200).json(newWarehouse)
 })
 
 
@@ -66,7 +66,25 @@ router.patch('/:id', (req,res)=>{
     warehouses.push(newWarehouse)
     fs.writeFile('./data/warehouses.json', JSON.stringify(warehouses), (err)=>console.log(err))
     let newWarehouseinDatabase = warehouses.find(w => w.id === id)
-    res.json(newWarehouseinDatabase)
+    res.status(200).json(newWarehouseinDatabase)
+})
+
+/* DELETE A WAREHOUSE -kv-please check! -only deletes the id */
+router.delete('/:id', (req,res)=>{
+    // find the warehouse to delete and remove it from the database
+    let id = req.params.id
+    let warehouse = warehouses.find(w => w.id === id)
+    let index = warehouses.indexOf(warehouse)
+    warehouses.splice(index, 1)
+})
+
+/* DELETE A WAREHOUSE -kv-please check! -only deletes the id */
+router.delete('/:id', (req,res)=>{
+    // find the warehouse to delete and remove it from the database
+    let id = req.params.id
+    let warehouse = warehouses.find(w => w.id === id)
+    let index = warehouses.indexOf(warehouse)
+    warehouses.splice(index, 1)
 })
 
 
