@@ -17,8 +17,6 @@ router.route('/')
         console.log("ROUTE YES");
         res.json(inventories)
     })
-<<<<<<< HEAD
-=======
 
 router.get('/:id', (req,res)=>{
     let id = req.params.id
@@ -29,17 +27,24 @@ router.get('/:id', (req,res)=>{
     res.json(inventory)
 })
 
+
+/* GET INVENTORY FOR A SINLGE WAREHOUSE*/
+router.get('/warehouse/:id', (req, res)=> {
+    let inv = inventories.filter(i => i.warehouseID === req.params.id)
+    inv.length > 0 ? res.status(200).json(inv) : res.sendStatus(400, 'No inventory associated with that warehouse ID')
+})
+
 /* copied format from warehouse *?
 /* GET A SINGLE INVENTORY */
 router.get('/:id', (req,res)=>{
-    const inventory = inventories.find(w => i.id === req.params.id)
+    const inventory = inventories.find(i => i.id === req.params.id)
     inventory ? res.json(inventory) : res.status(404).send("We couldn't find a inventory with that ID")
 })
 
 /* copied format from warehouse *?
 /* GET A SINGLE INVENTORY */
 router.get('/:id', (req,res)=>{
-    const inventory = inventories.find(w => i.id === req.params.id)
+    const inventory = inventories.find(i => i.id === req.params.id)
     inventory ? res.json(inventory) : res.status(404).send("We couldn't find a inventory with that ID")
 })
 
@@ -72,6 +77,7 @@ router.patch('/:id', (req,res)=>{
     // find the inventory to edit and remove it from the database
     let id = req.params.id
     let inventory = inventories.find(i => i.id === id)
+    !inventory && res.status(404).send('item does not exist')
     let index = inventories.indexOf(inventory)
     inventories.splice(index, 1)
 
@@ -86,13 +92,19 @@ router.patch('/:id', (req,res)=>{
     }
 
     // push the edited version into the database, write to file and return the edited version
-    inventorys.push(newInventory)
-    fs.writeFile('./data/inventories.json', JSON.stringify(inventories), (err)=>console.log(err))
-    let newInventoryinDatabase = inventories.find(i => i.id === id)
-    res.json(newInventoryinDatabase)
+    inventories.push(newInventory)
+    
+    fs.writeFile('./data/inventories.json', JSON.stringify(inventories), (err)=>{
+        if(err) console.log(err)
+
+        let newInventoryinDatabase = inventories.find(i => i.id === req.params.id)
+        console.log('NEW INV: ', newInventoryinDatabase)
+        inventories.push(newInventory)
+        res.json(newInventoryinDatabase)
+    })
+
 })
 
->>>>>>> develop
 
 /* DELETE an inventory */
 router.delete('/:id', (req,res)=>{
