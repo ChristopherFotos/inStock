@@ -1,0 +1,150 @@
+@import '../../partials/general';
+
+.background {
+  border-bottom: 1px solid $cloud;
+  padding-bottom: 27px;
+
+  @include tablet {
+    padding-bottom: 16px;
+  }
+
+  @include desktop {
+    &:hover {
+      background-color: rgba(46, 102, 230, 0.07);
+    }
+  }
+}
+
+.list {
+  padding: 0 8.25%;
+
+  @include tablet {
+    padding: 0 4.56%;
+    display: flex;
+    align-items: center;
+  }
+
+  &__border {
+    // border-top: 1px solid $cloud;
+    margin-top: 24px;
+    display: flex;
+
+    @include tablet {
+      width: 100%;
+    } 
+  }
+
+  &__square {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      flex-direction: row;
+      width: 40%;
+      align-items: center;
+    }
+
+    @include desktop {
+      width: 46%;
+    }
+
+    &-header {
+      font-family: 'TitilliumWeb';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 11px;
+      line-height: 16px;
+      text-transform: uppercase;
+      color: $slate;
+      margin: 16px 0 0 0;
+      white-space: nowrap;
+
+      @include tablet {
+        display: none;
+      }
+    }
+
+    &-container {
+      @include tablet {
+        width: 138px;
+        position: relative;
+      }
+    }
+
+    &-chevy {
+      position: absolute;
+      margin-left: 1%;
+      top: -10%;
+
+      @include desktop {
+        top: -8.5%
+      }
+    }
+
+    &-text {
+      font-family: 'TitilliumWeb';
+      font-style: normal;
+      font-weight: normal;
+      font-size: 13px;
+      line-height: 20px;
+      color: $black;
+      margin: 4px 0 0 0;
+      
+      &-address {
+        @include tablet {
+          width: 45%;
+        }
+        @include desktop {
+          width: 50%;
+        }
+      }
+
+        &-info {
+          @include tablet {
+            width: 150px;
+          }
+          
+          @include desktop {
+            padding-left: 32px;
+          }
+        }
+        &-name {
+          @include tablet {
+            padding: 0 48px 0 39px;
+            width: 100px;
+          }
+          @include desktop {
+            padding: 0 77px 0 0;
+          }
+        }
+    }
+
+    &-location {
+      @extend .list__square-text;
+      color: $blue;
+      position: relative;
+    }
+
+    &-buttons {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin: 19px 0 0 0;
+      padding: 0;
+      
+
+      @include tablet {
+        width: 15%;
+        padding-left: 15px;
+      }
+
+      @include desktop {
+        width: 7%;
+      }
+    }
+
+    &-push {
+      margin-right: 24px;
+    }
+  }
+}

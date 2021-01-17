@@ -1,4 +1,4 @@
-@import '../../partials/_general';
+@import '../../partials/general';
 a {
   text-decoration: none;
 };
@@ -45,7 +45,7 @@ body{
     align-items: center;
 
     &-link {
-      font-family: "TitilliumWeb";
+      font-family: 'TitilliumWeb';
       font-style: normal;
       font-weight: 600;
       font-size: .8125rem;
@@ -81,7 +81,14 @@ body{
 
 .foot {
   background-color: $gray-lt;
-  
+  display:flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 125vh;
+  @include tablet {
+    height: 80vh;
+  }
+
     &__copyright {
       display: flex;
       font-family: 'TitilliumWeb';
@@ -89,11 +96,11 @@ body{
       font-weight: normal;
       font-size: .6875rem;
       line-height: 16px;
-      padding: 490px 0 40px 0;
       margin: 0;
       color: $slate;
       text-align: center;
       display: flex;
       justify-content: center;
+      align-items: flex-end;
     }
 };
