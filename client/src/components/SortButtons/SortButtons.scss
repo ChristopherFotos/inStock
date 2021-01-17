@@ -1,0 +1,13 @@
+@import '../../partials/_general';
+$sortImg: '../../assets/images/Icons/sort-24px.svg';
+
+
+.button{
+    display: flex;
+    width: 15px;
+    height: 100%;
+    background-image: url($sortImg);
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position:center;
+}

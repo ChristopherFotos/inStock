@@ -2,27 +2,28 @@ import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-d
 import React from 'react';
 import AddWarehouse from './components/AddWarehouse/AddWarehouse'
 import EditWarehouse from './components/EditWarehouse/EditWarehouse'
-import './App.css';
+import './App.scss';
 import Header from './components/Header/Header';
 import Warehouselist from './components/Warehouselist/Warehouselist';
+import InventoryList from './components/InventoryList/InventoryList'
 
 class App extends React.Component {
   
   render(){
   return (
     <Router>
-       <div>
+       <div className="app">
             <Switch>
               <Route path="/" exact>
-                <Redirect to="/warehouses"/> //redirects the user to the warehouses list
+                <Redirect to="/warehouses"/>
               </Route>
-              <Route path="/warehouses" exact /> //displays a list of warehouses
-              <Route path="/warehouses/add" component={AddWarehouse}/> //displays a list of warehouses
-              <Route path="/inventory" /> //displays a list of inventory
-              <Route path="/warehouse/:id" exact/> //displays information on a specific warehouse
-              <Route path="/warehouse/:id/edit" component={EditWarehouse}/> //displays the form to edit a particular warehouse
-              <Route path="/warehouse/:id/inventory" /> //displays a list of a specific warehouse's inventory
-              <Route path="/warehouse/:id/inventory/:itemid" /> //displays a specific item info in a specific warehouse
+              <Route path="/warehouses" exact />
+              <Route path="/warehouses/add" component={AddWarehouse}/>
+              <Route path="/inventory" component={InventoryList} />
+              <Route path="/warehouse/:id" exact/>
+              <Route path="/warehouse/:id/edit" component={EditWarehouse}/>
+              <Route path="/warehouse/:id/inventory" />
+              <Route path="/warehouse/:id/inventory/:itemid" />
             </Switch>
       </div>
     </Router>

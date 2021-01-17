@@ -14,3 +14,13 @@
       @content;
     }
   }
+
+  @mixin iconButton{
+    width: 25px;
+    height: 25px;
+    background-color: rgba($color: white, $alpha: 0);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border: none;
+  }
