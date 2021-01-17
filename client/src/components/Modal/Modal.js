@@ -10,13 +10,17 @@ class Modal extends React.Component {
           
     }
   handleDelete(){
-    axios.delete(`http://localhost:8080/warehouses/${this.props.info.id}`)  
+    axios.delete(`http://localhost:8080/warehouses/${this.props.id}`)  
+
+    .catch (err => {
+      console.log(err)
+    })
 }
-  showModal = e => {
-    this.setState({
-      show: !this.state.show
-    });
-  };
+  // showModal = e => {
+  //   this.setState({
+  //     show: !this.state.show
+  //   });
+  // };
  
     render () {
     return (
@@ -25,8 +29,8 @@ class Modal extends React.Component {
               <form method="DELETE" id="delete_warehouse" className="modal-form">
                 <div className="modal__container" id="modal">
                   <div className="modal__close-container">
-                      <div className="modal__close-but" onClick={this.props.close}><div className="modal__close-x">{close}
-                      </div>
+                      <div className="modal__close-but" onClick={this.props.close}><img className="modal__close-x" src={close} alt='Big X in the corner'>
+                      </img>
                   </div>
                 </div>
         {/* use dynamic content */}
@@ -37,7 +41,7 @@ class Modal extends React.Component {
                     <div className="modal__cancel-but" id="cancel" onClick={this.props.close}>Cancel
                     </div>       
                     {/*  function handleDelete to delete data */}
-                    <div className="modal__delete-but" id="delete" onClick={(e)=>this.handleDelete(e)}>Delete
+                    <div className="modal__delete-but" id="delete" onClick={() => {this.handleDelete(); this.props.makeRequest()}}>Delete
                     </div>
                 </div>
                 </div>

@@ -69,23 +69,24 @@ router.patch('/:id', (req,res)=>{
     res.status(200).json(newWarehouseinDatabase)
 })
 
-/* DELETE A WAREHOUSE -kv-please check! -only deletes the id */
+/* DELETE A WAREHOUSE */
 router.delete('/:id', (req,res)=>{
     // find the warehouse to delete and remove it from the database
-    let id = req.params.id
-    let warehouse = warehouses.find(w => w.id === id)
-    let index = warehouses.indexOf(warehouse)
-    warehouses.splice(index, 1)
+    console.log(req.params.id)
+    for (let i = 0; i <warehouses.length; i++){
+        let currentWarehouse = warehouses[i];
+        if(currentWarehouse.id == req.params.id) {
+            warehouses.splice(i, 1);
+            return res.json(warehouses)
+        }
+    }
+    res.status(404).send (`The warehouse with an id of ${(req.params.id)} does not exist`);
+
+    fs.writeFile('./data/warehouses.json', JSON.stringify(warehouses), (err)=>console.log(err))
+    res.status(200).json(warehouses)
 })
 
-/* DELETE A WAREHOUSE -kv-please check! -only deletes the id */
-router.delete('/:id', (req,res)=>{
-    // find the warehouse to delete and remove it from the database
-    let id = req.params.id
-    let warehouse = warehouses.find(w => w.id === id)
-    let index = warehouses.indexOf(warehouse)
-    warehouses.splice(index, 1)
-})
+
 
 
 
