@@ -121,6 +121,7 @@ export default class AddInventory extends Component {
                             handleChange={(e)=>this.handleContactChange(e)} 
                         />
                     </div>
+                    </div>
 
                 <div className="form__button-container">
                     <button className="form__button">
