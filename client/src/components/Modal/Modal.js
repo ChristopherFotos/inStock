@@ -48,6 +48,7 @@ function Modal({info}) {
                 <div className="modal__but-container">
                     <div className="modal__cancel-but" id="cancel" onClick={this.onClose}>Cancel
                     </div>       
+
                     {/*  function handleDelete to delete data */}
                     <div className="modal__delete-but" id="delete" onClick={(e)=>this.handleDelete(e)}>Delete
                     </div>
