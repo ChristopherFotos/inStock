@@ -17,14 +17,21 @@ export default class AddInventory extends Component {
             description: '',
             category: '',
             status: '',
-            quantity: ''
+            quantity: '',
+            color: ''
         }
     }
+
+    onRadioChange = (e) => {
+        this.setState({
+          color: e.target.value
+        });
+      }
 
     handleDetailChange(e){
         this.setState({
             ...this.state,
-            [e.target.name]: e.target.value
+            [e.target.itemName]: e.target.value
         })
     }
 
@@ -33,7 +40,7 @@ export default class AddInventory extends Component {
             ...this.state,
             contact: {
                 ...this.state.contact,
-                [e.target.name]: e.target.value
+                [e.target.itemName]: e.target.value
             }
         })
 
@@ -78,15 +85,35 @@ export default class AddInventory extends Component {
                             text='Description' 
                             empty={this.isEmpty('description')} 
                             handleChange={(e)=>this.handleDetailChange(e)}
-                        />
-
-                        <Input 
+                        /> 
+                        
+                            <DropdownMultiple
+                            searchable={['Search for category', 'No matching category']}
                             value = {this.state.category}
-                            name='category'    
-                            text='Category' 
-                            empty={this.isEmpty('category')} 
+                            title="Please select"
+                            name='category' 
+                            empty={this.isEmpty('category')}
+                            list={this.state.category}
+                            toggleItem={this.toggleItem}
                             handleChange={(e)=>this.handleDetailChange(e)}
-                        />
+                          />
+
+                        {/* <select
+                            value = {this.state.category}
+                            title="Please select"
+                            name='category' 
+                            empty={this.isEmpty('category')}
+                            list={this.state.category}
+                            toggleItem={this.toggleItem}
+                            handleChange={(e)=>this.handleDetailChange(e)}
+                          />
+                          <option value="electronics">Electronics</option>
+                          <option value="gear">Gear</option>
+                          <option value="apparel">Apparel</option>
+                          <option value="accessories">Accessories</option>
+                          <option value="health">Health</option>
+                          </select> */}
+                        
                     </div>
 
                     <div className="form__right-section">
@@ -99,12 +126,13 @@ export default class AddInventory extends Component {
                             handleChange={(e)=>this.handleContactChange(e)} 
                         />
 
-                        <Input 
+                        <input type="radio"  
                             value = {this.state.contact.status}
                             name='status' 
                             text='Status' 
                             empty={this.isEmpty('status', true)} 
-                            handleChange={(e)=>this.handleContactChange(e)} 
+                            checked={this.state.color === "$blue"}
+                            handleChange={(e)=>this.onRadioChange(e)} 
                         />
                         <Input 
                             value = {this.state.contact.quantity}
@@ -113,7 +141,8 @@ export default class AddInventory extends Component {
                             empty={this.isEmpty('quantity', true)} 
                             handleChange={(e)=>this.handleContactChange(e)} 
                         />
-                        <Input 
+                        <DropdownMultiple
+                            searchable={['Search for warehouse', 'No matching warehouse']}
                             value = {this.state.contact.warehouse}
                             name='warehouse' 
                             text='Warehouse' 
