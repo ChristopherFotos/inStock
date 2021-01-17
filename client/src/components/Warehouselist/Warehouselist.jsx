@@ -4,14 +4,33 @@ import {Link} from 'react-router-dom'
 import sort from '../../assets/images/Icons/sort-24px.svg';
 import axios from 'axios';
 import Cardlist from '../Cardlist/Cardlist';
+import Modal from '../Modal/Modal';
 let url = 'http://localhost:8080/warehouses';
 
 
 class Warehouselist extends React.Component {
 
 state = {
-  warehouses:[]
+  warehouses:[],
+  show: false,  
+  modalProps: null
 };
+
+showModal = e => {
+  this.setState({
+    ...this.state,
+    show: !this.state.show,
+    modalName: e.target.dataset.name,
+    modalId: e.target.dataset.id,
+  });
+};
+
+closeModal = () => {
+  this.setState({
+    ...this.state,
+    show: false
+  })
+}
 
 componentDidMount() {
   axios.get(url)
@@ -36,16 +55,18 @@ componentDidMount() {
           </div>
         </header>
         <div className="column">
-        <h4 className="column__text--shift">WAREHOUSE <img className="column__text-sort" src={sort}alt=""/></h4>
-        <h4 className="column__text">ADDRESS<img className="column__text-sort" src={sort} alt=""/></h4>
-        <h4 className="column__text">CONTACT NAME<img className="column__text-sort" src={sort} alt=""/></h4>
-        <h4 className="column__text">CONTACT INFORMATION<img className="column__text-sort" src={sort} alt=""/></h4>
-        <h4 className="column__text--push">ACTIONS</h4>
-      </div>
+          <h4 className="column__text--shift">WAREHOUSE <img className="column__text-sort" src={sort}alt=""/></h4>
+          <h4 className="column__text">ADDRESS<img className="column__text-sort" src={sort} alt=""/></h4>
+          <h4 className="column__text">CONTACT NAME<img className="column__text-sort" src={sort} alt=""/></h4>
+          <h4 className="column__text">CONTACT INFORMATION<img className="column__text-sort" src={sort} alt=""/></h4>
+          <h4 className="column__text--push">ACTIONS</h4>
+        </div>
       <div >
-        {this.state.warehouses.map ((warehouse) => <Cardlist 
+        {this.state.warehouses.map ((warehouse) => <Cardlist showModal={(e) => this.showModal(e)}
           key={warehouse.id} warehouses={warehouse}/>)}
       </div>
+     {this.state.show && <Modal  name={this.state.modalName} id={this.state.modalId} show={this.state.show} close={() => this.closeModal()}/>}
+        
     </div>
   )
 }}

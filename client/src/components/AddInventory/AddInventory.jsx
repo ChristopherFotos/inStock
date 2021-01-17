@@ -115,6 +115,7 @@ export default class AddInventory extends Component {
                           </select> */}
                         
                     </div>
+                
 
                     <div className="form__right-section">
                     <h2 className="form__subheading">Item Availability</h2>
