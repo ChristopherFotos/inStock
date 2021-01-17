@@ -23,6 +23,8 @@ export default class EditInventory extends Component {
         }
     }
 
+    //copy updates from Add inventory formatting
+
     componentDidMount(){
         let id = this.props.match.params.id
         axios.get(`http://localhost:8080/inventories/${id}`)

@@ -3,7 +3,7 @@
 @import '../../partials/_variables';
 
 .form {
-    background-color: white;
+    background-color: $white;
     position: absolute;
     top: 150px;
     left:50%;
@@ -170,3 +170,39 @@
 .back {
     display: flex;
 }
+// inventory
+.inventoryInput-tall {
+    height: 120px;
+}
+.radio-continer {
+    display: flex;
+    cursor: pointer;
+}
+.radio-outer-circle {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    min-height: 16px;
+    border: 1px solid $blue;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 12px;
+    transition: all 0.1s linear;
+  }
+  
+  .radio-inner-circle {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: $blue;
+    transition: all 0.1s linear;
+  }
+  .unselected {
+    border: 1px solid $cloud;
+  }
+  .unselected-circle {
+    width: 0;
+    height: 0;
+  }

@@ -17,16 +17,34 @@ export default class AddInventory extends Component {
             description: '',
             category: '',
             status: '',
+                // in stock or out of stock
             quantity: '',
-            color: ''
+            // < 1 out of stock
         }
     }
-
+    componentDidMount(){
+        let id = this.props.match.params.id
+        axios.get(`http://localhost:8080/inventories/${id}`)
+            .then(res => {
+                this.setState(res.data)
+            })
+    }
+    // not sure about this...
     onRadioChange = (e) => {
         this.setState({
           color: e.target.value
         });
       }
+
+      isEmpty(name, contact){
+        let empty
+        if(!contact) !this.state[name]? empty = true : empty = false
+        if(contact)  !this.state.contact[name]? empty = true : empty = false
+        return empty
+    }
+
+    // if(inventory.length < 1) {
+        // affects the stock status }
 
     handleDetailChange(e){
         this.setState({
@@ -46,17 +64,21 @@ export default class AddInventory extends Component {
 
     }
 
-    handleSubmit(){
-        if(helpers.validateProperties(this.state).length > 0) return 
-        axios.post('http://localhost:8080/inventories', this.state)
-            .then(res=>this.props.history.push(`/inventory/${res.data.id}`))
-    }
-
     isEmpty(name, contact){
         let empty
         if(!contact) !this.state[name]? empty = true : empty = false
         if(contact)  !this.state.contact[name]? empty = true : empty = false
         return empty
+    }
+
+// toggleItem() {
+
+// }
+
+    handleSubmit(){
+        if(helpers.validateProperties(this.state).length > 0) return 
+        axios.post('http://localhost:8080/inventories', this.state)
+            .then(res=>this.props.history.push(`/inventory/${res.data.id}`))
     }
 
     render() {
@@ -72,14 +94,14 @@ export default class AddInventory extends Component {
                         <h2 className="form__subheading">Item Details</h2>
 
                         <Input 
-                            value = {this.state.name}
-                            name='name'    
+                            value = {this.state.itemName}
+                            name='itemName'    
+                            empty={this.isEmpty('itemName')} 
                             text='Item Name' 
-                            empty={this.isEmpty('name')} 
                             handleChange={(e)=>this.handleDetailChange(e)}
                         />
                         
-                        <Input 
+                        <Input className="inventoryInput-tall"
                             value = {this.state.description}
                             name='description' 
                             text='Description' 
@@ -97,7 +119,7 @@ export default class AddInventory extends Component {
                             toggleItem={this.toggleItem}
                             handleChange={(e)=>this.handleDetailChange(e)}
                           />
-
+                {/* are categories dynamic? */}
                         {/* <select
                             value = {this.state.category}
                             title="Please select"
@@ -105,14 +127,23 @@ export default class AddInventory extends Component {
                             empty={this.isEmpty('category')}
                             list={this.state.category}
                             toggleItem={this.toggleItem}
+                            multiple={true}
                             handleChange={(e)=>this.handleDetailChange(e)}
-                          />
-                          <option value="electronics">Electronics</option>
-                          <option value="gear">Gear</option>
-                          <option value="apparel">Apparel</option>
-                          <option value="accessories">Accessories</option>
-                          <option value="health">Health</option>
+                          /> 
+                          // map
+                          {this.categories.map(category => 
+                            <option value={category} key={category}>
+                            {category}</option>)}
                           </select> */}
+
+                          {/* if not dynamic 
+                            <option value="electronics">Electronics</option>
+                            <option value="gear">Gear</option>
+                            <option value="apparel">Apparel</option>
+                            <option value="accessories">Accessories</option>
+                            <option value="health">Health</option>
+
+                          */}
                         
                     </div>
                 
@@ -126,15 +157,29 @@ export default class AddInventory extends Component {
                             empty={this.isEmpty('name', true)} 
                             handleChange={(e)=>this.handleContactChange(e)} 
                         />
-
+                        
+                    <div className="radio-container">
                         <input type="radio"  
                             value = {this.state.contact.status}
                             name='status' 
-                            text='Status' 
+                            text='In stock' 
                             empty={this.isEmpty('status', true)} 
-                            checked={this.state.color === "$blue"}
+                            onClick={() => {
+                                onChange(value);
+                              }}
                             handleChange={(e)=>this.onRadioChange(e)} 
                         />
+                                                <input type="radio"  
+                            value = {this.state.contact.status}
+                            name='status' 
+                            text='Out of stock' 
+                            empty={this.isEmpty('status', false)} 
+                            onClick={() => {
+                                onChange(value);
+                              }}
+                            handleChange={(e)=>this.onRadioChange(e)} 
+                        />
+                        </div>
                         <Input 
                             value = {this.state.contact.quantity}
                             name='quantity' 
