@@ -105,16 +105,17 @@
           }
           
           @include desktop {
-            padding-left: 32px;
+            padding-left: 17px;
           }
         }
         &-name {
           @include tablet {
             padding: 0 48px 0 39px;
-            width: 100px;
+            width: 180px;
           }
           @include desktop {
             padding: 0 77px 0 0;
+            width: 188px;
           }
         }
     }
