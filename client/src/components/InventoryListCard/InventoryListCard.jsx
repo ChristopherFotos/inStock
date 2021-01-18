@@ -15,7 +15,7 @@ function InventoryListCard({item, isWHList, itemName, id, showModal}) {
     }
 
     let editButton = () => {
-        console.log(`EDIT BUTTON PRESSED ON ${item.name}`);
+        console.log(`EDIT BUTTON PRESSED ON ${item.id}`);
         //connect item edit backend here
     }
     let deleteButton = () => {
@@ -51,7 +51,7 @@ function InventoryListCard({item, isWHList, itemName, id, showModal}) {
                 <TitleAndInfo title={"WAREHOUSE"}info={item.warehouseName} />
     
                 <div className="info-card__icons">
-                    <ActionIcon type={"delete"} data-name={itemName} data-id={id} clickAction={showModal} />
+                    <ActionIcon type={"delete"} itemName={item.itemName} itemId={item.id} clickAction={showModal} />
                     <ActionIcon type={"edit"} clickAction={editButton} />
                 </div>
             </div>
