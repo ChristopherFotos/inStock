@@ -28,8 +28,8 @@ class ModalInvList extends React.Component {
                   </div>
                 </div>
         {/* use dynamic content */}
-                <h1 className="modal__title">Delete {this.props.name} warehouse?</h1>
-                <div className="modal__copy"><p> Please confirm that you'd like to delete the {this.props.name} from the list of warehouses. You won't be able to undo this action</p></div>
+                <h1 className="modal__title">Delete {this.props.items.itemName} inventory item?</h1>
+                <div className="modal__copy"><p> Please confirm that you'd like to delete the {this.props.itemName} from the inventory list. You won't be able to undo this action</p></div>
 
                 <div className="modal__but-container">
                     <div className="modal__cancel-but" id="cancel" onClick={this.props.close}>Cancel
