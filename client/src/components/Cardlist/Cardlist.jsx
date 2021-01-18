@@ -15,7 +15,7 @@ function Cardlist(props) {
           <div className="list__square">
             <h4 className="list__square-header">WAREHOUSE</h4>
             <div className="list__square-container">
-              <Link to={`/warehouse/${id}`}><p className='list__square-location'>{name}
+              <Link to='/warehouse/:id'><p className='list__square-location'>{name}
               <img className='list__square-chevy' src={chevron} alt="right chevron"/>
               </p>
               </Link>
