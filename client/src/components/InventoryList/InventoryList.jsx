@@ -16,7 +16,7 @@ export class InventoryList extends Component {
     }
 
     showModal = e => {
-        console.log("PRESSED");
+        console.log("PRESSED: " + e.target.dataset.name );
         
         this.setState({
         ...this.state,
