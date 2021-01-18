@@ -9,8 +9,6 @@ import axios from'axios'
 import Input from '../Input/Input'
 import '../styles/form.scss'
 
-
-
 export default class AddInventory extends Component {
     constructor(props){
         super(props)
@@ -43,6 +41,10 @@ export default class AddInventory extends Component {
             })
     }
 
+    goBack(){
+        this.props.history.push('/inventory')
+    }
+
     onRadioChange = (e) => {
         console.log('grdagfdshfds');
         this.setState({
@@ -64,8 +66,8 @@ export default class AddInventory extends Component {
     }
 
     handleSubmit(){
-        console.log(helpers.validateProperties(this.state.item).length);
-        if(helpers.validateProperties(this.state.item).length > 0) return 
+
+        if(helpers.validateProperties(this.state).length > 0) return 
 
         axios.post('http://localhost:8080/inventory', this.state.item)
             .then(res=>this.props.history.push(`/inventory/${res.data.id}`))
@@ -152,7 +154,7 @@ export default class AddInventory extends Component {
                     </div>
             </div>
                 <div className="form__button-container">
-                    <button className="form__button">
+                    <button className="form__button" onClick={()=>this.goBack()}>
                         Cancel
                     </button>
                     <button className="form__button" onClick={(e)=>this.handleSubmit(e)}>   

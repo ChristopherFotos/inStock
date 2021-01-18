@@ -1,10 +1,13 @@
 import React from 'react'
 import './InventoryListCard.scss'
-
+import {Link} from 'react-router-dom'
 import TitleAndInfo from '../TitleAndInfo/TitleAndInfo';
 import ActionIcon from '../ActionIcon/ActionIcon';
 
-function InventoryListCard({item, isWHList}) {
+function InventoryListCard({item, isWHList, itemName, itemId, showModal}) {
+    
+    // console.log(`showModal: ${showModal}`);
+    // let {itemName, id} = props.items
     let status;
     if(item.quantity > 0){
         status = true;
@@ -13,7 +16,7 @@ function InventoryListCard({item, isWHList}) {
     }
 
     let editButton = () => {
-        console.log(`EDIT BUTTON PRESSED ON ${item.name}`);
+        console.log(`EDIT BUTTON PRESSED ON ${item.id}`);
         //connect item edit backend here
     }
     let deleteButton = () => {
@@ -24,7 +27,7 @@ function InventoryListCard({item, isWHList}) {
     if(isWHList){
         // console.log("WAREHOUSE LIST");
         return (
-            <div className="info-card">
+            <div className="info-card raise">
                 <TitleAndInfo title={"INVENTORY ITEM"} info={item.itemName} isLink={true} />
                 <TitleAndInfo title={"CATEGORY"} info={item.category} />
                 <TitleAndInfo title={"STATUS"} info={"status"} status={status} />
@@ -49,8 +52,8 @@ function InventoryListCard({item, isWHList}) {
                 <TitleAndInfo title={"WAREHOUSE"}info={item.warehouseName} />
     
                 <div className="info-card__icons">
-                    <ActionIcon type={"delete"} clickAction={deleteButton} />
-                    <ActionIcon type={"edit"} clickAction={editButton} />
+                    <ActionIcon type={"delete"} itemName={item.itemName} itemId={itemId} clickAction={showModal} />                 
+                    <ActionIcon type={"edit"} itemId={itemId} thing1={'hello'}/>
                 </div>
             </div>
         )

@@ -4,23 +4,17 @@ import axios from 'axios';
 import close from '../../assets/images/Icons/close-24px.svg';
 
 
-class Modal extends React.Component {
+class ModalInvList extends React.Component {
   constructor(props) {
-    super(props);
-          
-    }
+    super(props);     
+  }
   handleDelete(){
-    axios.delete(`http://localhost:8080/warehouses/${this.props.id}`)  
-    .then(this.props.makeRequest)
+    axios.delete(`http://localhost:8080/inventory/${this.props.id}`)  
     .catch (err => {
       console.log(err)
     })
 }
-  // showModal = e => {
-  //   this.setState({
-  //     show: !this.state.show
-  //   });
-  // };
+  
  
     render () {
     return (
@@ -34,14 +28,14 @@ class Modal extends React.Component {
                   </div>
                 </div>
         {/* use dynamic content */}
-                <h1 className="modal__title">Delete {this.props.name} warehouse?</h1>
-                <div className="modal__copy"><p> Please confirm that you'd like to delete the {this.props.name} from the list of warehouses. You won't be able to undo this action</p></div>
+                <h1 className="modal__title">Delete {this.props.items.itemName} inventory item?</h1>
+                <div className="modal__copy"><p> Please confirm that you'd like to delete the {this.props.itemName} from the inventory list. You won't be able to undo this action</p></div>
 
                 <div className="modal__but-container">
                     <div className="modal__cancel-but" id="cancel" onClick={this.props.close}>Cancel
                     </div>       
                     {/*  function handleDelete to delete data */}
-                    <div className="modal__delete-but" id="delete" onClick={() => {this.handleDelete()}}>Delete
+                    <div className="modal__delete-but" id="delete" onClick={() => {this.handleDelete(); this.props.makeRequest()}}>Delete
                     </div>
                 </div>
                 </div>
@@ -52,4 +46,4 @@ class Modal extends React.Component {
   }
 }
 
-export default Modal;
+export default ModalInvList;

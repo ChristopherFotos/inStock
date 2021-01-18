@@ -4,7 +4,25 @@ import { Link } from 'react-router-dom';
 
 import SelectArrow from '../../assets/images/Icons/chevron_right-24px.svg';
 
-function TitleAndInfo({ title, info, isLink, status, mobileOnly}) {
+function TitleAndInfo({ title, info, isLink, status, mobileOnly, wideInfo, showMobile}) {
+    if(showMobile){
+       return (
+        <div className="ti-container smol">
+            <h4 className="ti-container__title">{title}</h4>
+            <h4 className="ti-container__content align-left">{info}</h4>
+        </div>
+       ) 
+    }
+
+    if(wideInfo){
+        return (
+         <div className="ti-container wide">
+             <h4 className="ti-container__title">{title}</h4>
+             <h4 className="ti-container__content align-left">{info}</h4>
+         </div>
+        ) 
+     }
+
     if(mobileOnly){
        return (
         <div className="ti-container  mobile-only">

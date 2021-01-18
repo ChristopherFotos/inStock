@@ -18,14 +18,6 @@ router.route('/')
         res.json(inventories)
     })
 
-router.get('/:id', (req,res)=>{
-    let id = req.params.id
-    let inventory = inventories.filter(i => i.inventoryID === id)
-
-    if(inventory.length < 1) res.status(404).json({error: "We couldn't find any items associated with that inventory ID"})
-
-    res.json(inventory)
-})
 
 
 /* GET INVENTORY FOR A SINLGE WAREHOUSE*/
@@ -38,21 +30,17 @@ router.get('/warehouse/:id', (req, res)=> {
 /* GET A SINGLE INVENTORY */
 router.get('/:id', (req,res)=>{
     const inventory = inventories.find(i => i.id === req.params.id)
-    inventory ? res.json(inventory) : res.status(404).send("We couldn't find a inventory with that ID")
+    console.log(inventory)
+    res.json(inventory) 
 })
 
-/* copied format from warehouse *?
-/* GET A SINGLE INVENTORY */
-router.get('/:id', (req,res)=>{
-    const inventory = inventories.find(i => i.id === req.params.id)
-    inventory ? res.json(inventory) : res.status(404).send("We couldn't find a inventory with that ID")
-})
 
 /* ADD NEW inventory */
 router.post('/', (req, res)=>{
     const inventory = req.body
     console.log(inventory)
     let warehouse = warehouses.find((w)=>w.id === inventory.warehouseID)
+    console.log(warehouse)
     warehouse ? inventory.warehouseName = warehouse.name : res.status(400).send('invalid warehouse ID') 
 
     // check for invalid inputs

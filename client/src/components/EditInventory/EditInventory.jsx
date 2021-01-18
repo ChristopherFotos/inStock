@@ -2,80 +2,177 @@ import React, { Component } from 'react'
 import arrow from '../../assets/images/Icons/arrow_back-24px.svg'
 import add from '../../assets/images/Icons/add.svg'
 import helpers from '../../helper-functions'
+import DescriptionInput from '../DescriptionInput/DescriptionInput'
+import Dropdown from '../Dropdown/Dropdown'
+import RadioInput from '../RadioInput/RadioInput'
 import axios from'axios'
 import Input from '../Input/Input'
-
 import '../styles/form.scss'
 
 export default class EditInventory extends Component {
     constructor(props){
         super(props)
         this.state = {
-            id: '',
-            warehouseID: '',
-            warehouseName: '',
-            itemName: '',
-            description: '',
-            category: '',
-            status: '',
-            quantity: ''
+            item: {
+                warehouseID: '',
+                itemName: '',
+                description: '',
+                category: '',
+                status: 'In Stock',
+                quantity: '',
+            },
+            warehouseList: []
         }
     }
-
-    //copy updates from Add inventory formatting
-
     componentDidMount(){
         let id = this.props.match.params.id
-        axios.get(`http://localhost:8080/inventories/${id}`)
+        axios.get(`http://localhost:8080/inventory/${id}`)
             .then(res => {
-                this.setState(res.data)
+                console.log(res.data);
+                this.setState({
+                    ...this.state,
+                    item: {
+                        warehouseID: '',
+                        id: res.data.id,
+                        itemName: res.data.itemName,
+                        description: res.data.description,
+                        category: res.data.category,
+                        status: res.data.status,
+                        quantity: res.data.quantity,
+                    }
+                })
+            }).catch(err=>{console.log(err);})
+
+        axios.get('http://localhost:8080/warehouses')
+            .then(res => {
+                this.setState({
+                    ...this.state,
+                    warehouseList: res.data.map(w => {return {name: w.name, value: w.id}})
+                })
             })
     }
 
-    handleDetailChange(e){
-        this.setState({
-            ...this.state,
-            [e.target.name]: e.target.value
-        })
+    goBack(){
+        this.props.history.push('/inventory')
     }
 
-    handleChange(e){
+    onRadioChange = (e) => {
+        console.log('grdagfdshfds');
         this.setState({
             ...this.state,
-            // contact: {
-            //     ...this.state.contact,
-            //     [e.target.name]: e.target.value
-            // }
+            item:{
+                ...this.state.item,
+                status: e.target.value
+            }         
+        });
+    }
+
+    handleDetailChange(e){    
+        this.setState({
+            ...this.state,
+            item:{
+                ...this.state.item,
+                [e.target.name]: e.target.value
+            }
+            
         })
+        console.log(this.state.item[e.target.name]);
     }
 
     handleSubmit(){
         let id = this.props.match.params.id
         if(helpers.validateProperties(this.state).length > 0) return 
-        axios.patch(`http://localhost:8080/inventories/${id}`, this.state)
-            .then(res=>this.props.history.push(`/inventory/${res.data.id}`))
+        axios.patch(`http://localhost:8080/inventory/${id}`, this.state.item)
+            .then(res=>this.props.history.push(`/inventory/${id}`))
     }
 
-    // isEmpty(name, contact){
-    //     let empty
-    //     if(!contact) !this.state[name]? empty = true : empty = false
-    //     if(contact)  !this.state.contact[name]? empty = true : empty = false
-    //     return empty
-    // }
+    isEmpty(name){
+        let empty
+        !this.state.item[name]? empty = true : empty = false
+        return empty
+    }
 
     render() {
         return (
-            
-            <div>
+            <div className = 'form titilliumWeb-Regular'>
+                <div className="form__header">
+                    <img src={arrow} className = 'form__back-arrow' alt=""/> 
+                    <h1 className="form__heading">Edit Inventory Item</h1>                    
+                </div>
+
+                <div className="flex-container">
+                    <div className="form__left-section">
+                        <h2 className="form__subheading">Item Details</h2>
+
+                        <Input 
+                            value = {this.state.item.itemName}
+                            name='itemName'                             
+                            text='Item Name' 
+                            empty={this.isEmpty('itemName')}
+                            handleChange={(e)=>this.handleDetailChange(e)}
+                        />
+                        
+                        <DescriptionInput
+                            value = {this.state.item.description}
+                            name='description' 
+                            text='Description'     
+                            empty={this.isEmpty('description')}
+                            handleChange = {this.handleDetailChange}                       
+                            handleChange={(e)=>this.handleDetailChange(e)}
+                        />           
+
+                        <Dropdown 
+                            handleChange={e=>this.handleDetailChange(e)}
+                            value={this.state.item.category}
+                            title = 'Category'
+                            name = 'category'
+                            options={
+                                ['',
+                                    {value: 'Electronics', name: 'Electronics'}, 
+                                    {value:'Gear', name: 'Gear'}, 
+                                    {value:'Accessories', name:'Accessories'}, 
+                                    {value:'Health', name: 'Health'},
+                                    {value:'Apparel', name: 'Apparel'}
+                                ]
+                            }
+                            empty = {this.isEmpty('category')}
+                        />
+
+                    </div>
+                
+
+                    <div className="form__right-section">
+                    <h2 className="form__subheading">Item Availability</h2>
+                        <p className="form__label">Status</p>
+                        <RadioInput status={this.state.item.status} handleChange={e=>this.onRadioChange(e)}/>
+
+                        {this.state.item.status === 'In Stock' && <Input 
+                            value = {this.state.item.quantity}
+                            name='quantity' 
+                            text='Quantity'
+                            type='number' 
+                            empty={this.isEmpty('quantity')}
+                            handleChange={(e)=>this.handleDetailChange(e)} 
+                        />}
+
+                            <Dropdown 
+                            handleChange={e=>this.handleDetailChange(e)}
+                            title = 'Warehouse'
+                            name = 'warehouseID'
+                            options={
+                                ['', ...this.state.warehouseList]
+                            }
+                            empty = {this.isEmpty('warehouseID')}
+                        />
+
+                    </div>
+            </div>
                 <div className="form__button-container">
-                    <button className="form__button">
+                    <button className="form__button" onClick={()=>this.goBack()}>
                         Cancel
                     </button>
-                    <button className="form__button" 
-                        onClick={(e)=>this.handleSubmit(e)}
-                    >   
-                        <img src={add} className='plus-icon'/> 
-                        Add Item
+                    <button className="form__button" onClick={(e)=>this.handleSubmit(e)}>   
+                        Save
                     </button>
                 </div>
             </div>

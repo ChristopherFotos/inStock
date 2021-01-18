@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './inventoryList.scss'
 import axios from 'axios';
+import ModalInvList from '../Modal/ModalInvList';
 import WarehouseDetails from '../WarehouseDetails/WarehouseDetails'
 import SortButtons from '../SortButtons/SortButtons';
 import InvCardList from '../InvCardList/InvCardList';
@@ -10,8 +11,28 @@ export class InventoryList extends Component {
         super();
         this.state = {
             items: [],
+            show: false
         }
     }
+
+    showModal = e => {
+        console.log("PRESSED: " + e.target.dataset.name );
+        
+        this.setState({
+        ...this.state,
+        show: !this.state.show,
+        modalName: e.target.dataset.name,
+        modalId: e.target.dataset.id,
+  });
+};
+
+    closeModal = () => {
+        this.setState({
+        ...this.state,
+        show: false,
+  })
+}
+    
 
     componentDidMount() {
         axios.get('http://localhost:8080/inventory')
@@ -22,6 +43,13 @@ export class InventoryList extends Component {
             });
         })
     }
+
+    getInventoryList = () => {
+    axios.get ('http://localhost:8080/inventory')
+    .then(res => {
+    this.setState({items: res.data, show: false})
+  })
+}
 
 
     render() {
@@ -73,8 +101,9 @@ export class InventoryList extends Component {
                         </div>
                     </div>
                 </div>
-
-                <InvCardList items={this.state.items} />
+    
+            <InvCardList  showModal={(e) => this.showModal(e)} items={this.state.items} />
+            {this.state.show && <ModalInvList items={this.state.items} name={this.state.modalName} id={this.state.modalId} show={this.state.show} close={() => this.closeModal()} makeRequest={() => this.getInventoryList()}/>}
             </div>
         )
     }

@@ -1,5 +1,6 @@
 @import '../../partials/variables.scss';
 @import '../../partials/mixins.scss';
+@import '../../partials/general';
 
 /* Box-sizing border-box */
 * {
@@ -15,23 +16,34 @@
 }
 
   .modal-backdrop {
-    height: 667px;
+    z-index: 2;
+    @include tablet {
+      background-color: rgba(19, 24, 44, 0.7);
+      height: 100vh;
+      width: 100vw;
+      position: fixed;
+      top: 0;
+      right: 0;
     }
 
   .modal {
     background-color: $white;
     border-radius: 3px;
     box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
-    filter: blur(0);
-    overflow: hidden;
-    transform: scale(1);
-    opacity: 1;
-    display: flex;
     flex-direction: column;
     padding: 1.5rem 2rem 4rem 2rem;
     margin: 0;
     width: 100%;
     max-width: 672px;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    padding: 21px 16px 24px;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    
 
     @include tablet {
         position: absolute;
@@ -39,17 +51,12 @@
         right: 5%;
         top: 20%;
         min-width: 80vw;
-        max-width: 80vh;
         height: 30vh;
         margin: 0 auto;
         max-height: 262px;
     }
     @include desktop {
-        position: absolute;
-        left: 24%;
-        right: 24%;
-        top: 20%;
-        min-width: 672px;
+        min-width: 604px;
         max-width: 40vw;
     }
 
@@ -59,8 +66,8 @@
         display: flex;
         border-radius: 20px;
         align-items: center;
+        font-family: 'TitilliumWeb';
         justify-content: space-around;
-        padding-bottom: 5px;
         background-color: $white;
         color: $black;
         border: 1px solid $cloud;
@@ -76,10 +83,10 @@
         width: 55vw;
         display: flex;
         height: 38px;
+        font-family: 'TitilliumWeb';
         border-radius: 20px;
         align-items: center;
         justify-content: space-around;
-        padding-bottom: 5px;
         background-color: $red;
         color: $white;
 
@@ -98,10 +105,6 @@
         z-index: 1;
         max-height: 667px;
 
-        @include tablet {
-            height: 262px;
-
-        }
 
   }
 
@@ -126,16 +129,18 @@
         display: flex;
         font-weight: 600;
         font-size: 32px;
+        font-family: 'TitilliumWeb';
         line-height: 40px;
         color:$black;
         width: 80%;
         margin: 0px 0px 1rem 0px;
-        padding-bottom: 1rem;
+        padding-bottom: 7rem;
         height: 40px;
         text-align: left;
 
         @include tablet {
             width: 100%;
+            padding-bottom: 0;
         }
     }
     &__copy {
@@ -143,6 +148,7 @@
         width: 100%;
         height: 56px;
         font-size: 16px;
+        font-family: 'TitilliumWeb';
         line-height: 28px;
         color: $black;
         text-align: left;
@@ -170,6 +176,7 @@
         }
         @include desktop {
             justify-content: flex-end;
+            margin-top: 0;
         }
     }
 
@@ -190,4 +197,4 @@
 // parent button - placeholder
 #centered-toggle-button {
     position: absolute;
-  }
+  }}

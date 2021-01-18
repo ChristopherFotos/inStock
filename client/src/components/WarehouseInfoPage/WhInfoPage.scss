@@ -1,0 +1,44 @@
+@import '../../partials/_general';
+
+$search-icon: '../../assets/images/Icons/search-24px.svg';
+
+*{
+    margin: 0;
+    padding: 0;
+}
+.whl-page{
+    padding: 0 5%;
+    @include tablet{
+        // padding: 0 5%;
+    }
+}
+
+.wh-page{
+    padding: 0;
+    position: relative;
+    // top: ;
+}
+
+.table-titles{
+    display: none;
+    @include tablet{
+        padding: 0;
+        width: 100%;
+        background-color: rgba($color: #F7F8F9, $alpha: 0.7);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 40px;
+    }
+    @include desktop{
+        padding: 0 5%;
+    }
+    &__header{
+        display: flex;
+        justify-content: center;
+        width: 16%;
+        font-size: 0.7rem;
+        font-weight: lighter;
+        text-align: center;
+    }
+}

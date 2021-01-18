@@ -6,7 +6,7 @@ import warning from '../../assets/images/Icons/error-24px.svg'
 
 export default class DescriptionInput extends Component {
     render() {
-        console.log(this.props);
+
         return (
             <div>
                 <label className='form__label' htmlFor="description">Description</label>
@@ -17,7 +17,10 @@ export default class DescriptionInput extends Component {
                     cols="30" 
                     rows="10" 
                     onChange ={this.props.handleChange}
-                    placeholder="Please enter an item description">
+                    placeholder="Please enter an item description"
+                    value={this.props.value}
+                    >
+                    
                 </textarea>
                 {this.props.empty && 
                     <span className="form__validation-span">

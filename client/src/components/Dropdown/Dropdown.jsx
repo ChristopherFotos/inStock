@@ -9,7 +9,7 @@ export default class Dropdown extends Component {
         return (
             <div>
                 <label className='form__label' htmlFor="category">{this.props.title}</label>
-                <select name={this.props.name} className={`form__dropdown ${this.props.empty ? 'form__input--empty' : ''}`} onChange={(e)=>this.props.handleChange(e)}>
+                <select name={this.props.name} value={this.props.value} className={`form__dropdown ${this.props.empty ? 'form__input--empty' : ''}`} onChange={(e)=>this.props.handleChange(e)}>
                     {this.props.options.map(o => <option value={o.value}>{o.name}</option>)}
                 </select>
                 {this.props.empty && 
