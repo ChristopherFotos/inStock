@@ -9,7 +9,7 @@ import axios from'axios'
 import Input from '../Input/Input'
 import '../styles/form.scss'
 
-export default class AddInventory extends Component {
+export default class EditInventory extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -25,11 +25,23 @@ export default class AddInventory extends Component {
         }
     }
     componentDidMount(){
-        // let id = this.props.match.params.id
-        // axios.get(`http://localhost:8080/inventories/${id}`)
-        //     .then(res => {
-        //         this.setState(res.data)
-        //     })
+        let id = this.props.match.params.id
+        axios.get(`http://localhost:8080/inventory/${id}`)
+            .then(res => {
+                console.log(res.data);
+                this.setState({
+                    ...this.state,
+                    item: {
+                        warehouseID: '',
+                        id: res.data.id,
+                        itemName: res.data.itemName,
+                        description: res.data.description,
+                        category: res.data.category,
+                        status: res.data.status,
+                        quantity: res.data.quantity,
+                    }
+                })
+            }).catch(err=>{console.log(err);})
 
         axios.get('http://localhost:8080/warehouses')
             .then(res => {
@@ -37,7 +49,6 @@ export default class AddInventory extends Component {
                     ...this.state,
                     warehouseList: res.data.map(w => {return {name: w.name, value: w.id}})
                 })
-                console.log(this.state.warehouseList);
             })
     }
 
@@ -49,7 +60,11 @@ export default class AddInventory extends Component {
         console.log('grdagfdshfds');
         this.setState({
             ...this.state,
-          status: e.target.value
+            item:{
+                ...this.state.item,
+                status: e.target.value
+            }
+          
         });
       }
 
@@ -66,9 +81,10 @@ export default class AddInventory extends Component {
     }
 
     handleSubmit(){
+        let id = this.props.match.params.id
         if(helpers.validateProperties(this.state).length > 0) return 
-        axios.post('http://localhost:8080/inventory', this.state.item)
-            .then(res=>this.props.history.push(`/inventory/${res.data.id}`))
+        axios.patch(`http://localhost:8080/inventory/${id}`, this.state.item)
+            .then(res=>this.props.history.push(`/inventory/${id}`))
     }
 
     isEmpty(name){
@@ -82,7 +98,7 @@ export default class AddInventory extends Component {
             <div className = 'form titilliumWeb-Regular'>
                 <div className="form__header">
                     <img src={arrow} className = 'form__back-arrow' alt=""/> 
-                    <h1 className="form__heading">Add New Inventory Item</h1>                    
+                    <h1 className="form__heading">Edit Inventory Item</h1>                    
                 </div>
 
                 <div className="flex-container">
@@ -108,6 +124,7 @@ export default class AddInventory extends Component {
 
                         <Dropdown 
                             handleChange={e=>this.handleDetailChange(e)}
+                            value={this.state.item.category}
                             title = 'Category'
                             name = 'category'
                             options={
