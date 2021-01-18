@@ -38,13 +38,13 @@ export default class EditInventory extends Component {
         })
     }
 
-    handleContactChange(e){
+    handleChange(e){
         this.setState({
             ...this.state,
-            contact: {
-                ...this.state.contact,
-                [e.target.name]: e.target.value
-            }
+            // contact: {
+            //     ...this.state.contact,
+            //     [e.target.name]: e.target.value
+            // }
         })
     }
 
@@ -55,12 +55,12 @@ export default class EditInventory extends Component {
             .then(res=>this.props.history.push(`/inventory/${res.data.id}`))
     }
 
-    isEmpty(name, contact){
-        let empty
-        if(!contact) !this.state[name]? empty = true : empty = false
-        if(contact)  !this.state.contact[name]? empty = true : empty = false
-        return empty
-    }
+    // isEmpty(name, contact){
+    //     let empty
+    //     if(!contact) !this.state[name]? empty = true : empty = false
+    //     if(contact)  !this.state.contact[name]? empty = true : empty = false
+    //     return empty
+    // }
 
     render() {
         return (
@@ -75,26 +75,26 @@ export default class EditInventory extends Component {
                         <h2 className="form__subheading">Item Details</h2>
 
                         <Input 
-                            value = {this.state.itemName}
-                            name='itemName'    
+                            value = 'dummy'
+                            name='dummy'    
                             text='Inventory Name' 
-                            empty={this.isEmpty('itemName')} 
+                            empty={this.isEmpty('dummy')} 
                             handleChange={(e)=>this.handleDetailChange(e)}
                         />
                         
                         <Input 
-                            value = {this.state.description}
-                            name='description' 
+                            value = 'dummy'
+                            name='dummy' 
                             text='Description' 
-                            empty={this.isEmpty('description')} 
+                            empty={this.isEmpty('dummy')} 
                             handleChange={(e)=>this.handleDetailChange(e)}
                         />
 
                         <Input 
-                            value = {this.state.category}
-                            name='category'    
+                            value = 'dummy'
+                            name='dummy'    
                             text='Category' 
-                            empty={this.isEmpty('category')} 
+                            empty={this.isEmpty('dummy')} 
                             handleChange={(e)=>this.handleDetailChange(e)}
                         />
                     </div>
@@ -102,26 +102,26 @@ export default class EditInventory extends Component {
                     <div className="form__right-section">
                     <h2 className="form__subheading">Item Availability</h2>
                         <Input 
-                            value = {this.state.contact.status}
-                            name='status' 
+                            value = 'dummy'
+                            name='dummy' 
                             text='Status' 
-                            empty={this.isEmpty('status', true)} 
-                            handleChange={(e)=>this.handleContactChange(e)} 
+                            empty={this.isEmpty('dummy', true)} 
+                            handleChange={(e)=>this.handleChange(e)} 
                         />
                         <Input 
-                            value = {this.state.contact.quantity}
-                            name='quantity' 
+                            value = 'dummy'
+                            name='dummy' 
                             text='Quantity' 
-                            empty={this.isEmpty('quantity', true)} 
-                            handleChange={(e)=>this.handleContactChange(e)} 
+                            empty={this.isEmpty('dummy', true)} 
+                            handleChange={(e)=>this.handleChange(e)} 
                         />
 
                         <Input 
-                            value = {this.state.contact.warehouse}
-                            name='warehouse' 
+                            value = 'dummy'
+                            name='dummy' 
                             text='Warehouse' 
-                            empty={this.isEmpty('warehouse', true)} 
-                            handleChange={(e)=>this.handleContactChange(e)} 
+                            empty={this.isEmpty('dummy', true)} 
+                            handleChange={(e)=>this.handleChange(e)} 
                         />
                     </div>
 
