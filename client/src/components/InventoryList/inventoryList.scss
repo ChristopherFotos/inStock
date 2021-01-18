@@ -1,0 +1,124 @@
+@import '../../partials/_general';
+
+$search-icon: '../../assets/images/Icons/search-24px.svg';
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+.info{
+    border-radius: 3px;
+    @include tablet{
+        width: 100%;
+    }
+    @include desktop{
+    }
+}
+
+.info-header{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 32px 16px;
+    border-bottom: 1px solid #BDC5D5;
+    @include tablet{
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        border: none;
+    }
+    @include desktop{
+        padding: 32px 5%;
+    }
+    &__title{
+        padding-bottom: 16px;
+        @include tablet{
+            padding-bottom: 0;
+            font-size: 2rem;
+        }
+    }
+    &__form{
+        display: flex;
+        flex-direction: column;
+        @include tablet{
+            flex-direction: row;
+            justify-content: flex-end;
+            width: 60%;
+        }
+        @include desktop{
+            width: 75%;
+        }
+        &__input{
+            height: 36px;
+            border: 1px solid #BDC5D5;
+            box-sizing: border-box;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            background-image: url($search-icon);
+            background-repeat: no-repeat;
+            background-position: right;
+            padding: 0 15px;
+            @include tablet{
+                width: 75%;
+            }
+            @include desktop{
+                margin-left: auto;
+                width: 30%;
+            }
+        }
+        &__submit-bttn{
+            color: white;
+            height: 36px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 103px;
+            border: none;
+            @include tablet{
+                margin-left: 16px;
+                padding: 8px 16px;
+                width: 40%;
+                text-align: center;
+            }
+            @include desktop{
+                width: 20%;
+            }
+
+    
+
+/* Instock-Indigo */
+
+background: #2E66E6;
+border-radius: 20px;
+        }
+
+    }
+}
+
+
+.table-titles{
+    display: none;
+    @include tablet{
+        // width: 100%;
+        background-color: rgba($color: #F7F8F9, $alpha: 0.7);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 16px;
+        height: 40px;
+    }
+    @include desktop{
+        padding: 0 5%;
+    }
+    &__header{
+        display: flex;
+        justify-content: center;
+        width: 16%;
+        font-size: 0.7rem;
+        font-weight: lighter;
+        text-align: center;
+    }
+}

@@ -1,0 +1,28 @@
+@import '../../partials/_general';
+
+$deleteIcon: url('../../assets/images/Icons/delete_outline-24px.svg');
+$editIcon: url('../../assets/images/Icons/edit-24px.svg');
+
+.icon{
+    display: flex;
+    width: fit-content;
+    @include tablet{
+         width: fit-content;   
+    }
+    @include desktop{
+        margin-left: auto
+    }
+    &__bttn{
+        @include iconButton;
+    }
+    
+    & .delete{
+        background-image: $deleteIcon;
+        margin-right: 0;
+        @include desktop{
+        }
+    }
+    & .edit{
+        background-image: $editIcon;
+    }
+}
