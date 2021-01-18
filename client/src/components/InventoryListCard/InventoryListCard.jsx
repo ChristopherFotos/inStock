@@ -26,7 +26,7 @@ function InventoryListCard({item, isWHList, itemName, id, showModal}) {
     if(isWHList){
         // console.log("WAREHOUSE LIST");
         return (
-            <div className="info-card">
+            <div className="info-card raise">
                 <TitleAndInfo title={"INVENTORY ITEM"} info={item.itemName} isLink={true} />
                 <TitleAndInfo title={"CATEGORY"} info={item.category} />
                 <TitleAndInfo title={"STATUS"} info={"status"} status={status} />

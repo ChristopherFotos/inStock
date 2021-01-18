@@ -3,19 +3,19 @@ import InventoryListCard from '../InventoryListCard/InventoryListCard'
 import axios from 'axios';
 
 export class WarehouseItemList extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             items: [],
         }
     }
 
     componentDidMount() {
+        console.log("WAREHOUSE ID: " + this.props.wareID);
 
         //DELETE ME ONCE YOU BRING IN THE WAREHOUSE STUFF
-        axios.get('http://localhost:8080/inventory')
+        axios.get(`http://localhost:8080/inventory/warehouse/${this.props.wareID}`)
         .then((res) => {
-            // console.log(res.data);
             this.setState({
                 items: res.data,
             });
@@ -23,7 +23,7 @@ export class WarehouseItemList extends Component {
     }
 
     renderList = (listToRender) => {
-        console.log(`# OF ITEMS TO RENDER: ${listToRender.length}`);
+
         return (listToRender.map(item =>
                 // console.log(`EACH ITEM INFO: ${item}`)
                 <InventoryListCard item={item} isWHList={true} key={item.id} />
