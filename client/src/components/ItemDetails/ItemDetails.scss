@@ -1,0 +1,36 @@
+@import '../../partials/_general';
+
+.details-page{
+    // background-color: white;
+    position: relative;
+    top: -114px;
+    padding: 0 16px;
+    
+    @include desktop{
+        padding: 0 15%;
+    }
+}
+
+
+.title-group{
+    background-color: white;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    @include tablet{
+        width: 50%;
+        &:first-child{
+            border-right: 2px solid #BDC5D5;
+        }
+        &:last-child{
+            padding-left: 5%;
+        }
+    }
+}
+
+.info-card{
+    border-top: 2px solid #BDC5D5;
+    background-color: white;
+}
+
