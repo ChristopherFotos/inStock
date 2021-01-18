@@ -8,7 +8,7 @@ function CardList({items}) {
         console.log(`# OF ITEMS TO RENDER: ${listToRender.length}`);
         return (listToRender.map(item =>
                 // console.log(`EACH ITEM INFO: ${item}`)
-                <InventoryListCard item={item} key={item.id} />
+                <InventoryListCard item={item} isWHList={false} key={item.id} />
             )
         )
     }

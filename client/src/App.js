@@ -8,6 +8,7 @@ import Footer from './components/Footer/Footer';
 import Warehouselist from './components/Warehouselist/Warehouselist';
 import InventoryList from './components/InventoryList/InventoryList'
 import WarehouseDetails from './components/WarehouseDetails/WarehouseDetails'
+import WhInfoPage from '../src/components/WarehouseInfoPage/WhInfoPage'
 
 class App extends React.Component {
   
@@ -23,6 +24,9 @@ class App extends React.Component {
               <Route path="/inventory" component={InventoryList} />
               <Route path="/warehouse/:id" exact component={WarehouseDetails}/> //displays information on a specific warehouse
               <Route path="/warehouse/:id/edit" component={EditWarehouse}/> //displays the form to edit a particular warehouse
+
+              <Route path="/test" component={WhInfoPage} /> //displays a list of a specific warehouse's inventory
+
               <Route path="/warehouse/:id/inventory" /> //displays a list of a specific warehouse's inventory
               <Route path="/warehouse/:id/inventory/:itemid" /> //displays a specific item info in a specific warehouse
             </Switch>
