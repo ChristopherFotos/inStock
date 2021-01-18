@@ -108,10 +108,18 @@ router.patch('/:id', (req,res)=>{
 
 /* DELETE an inventory */
 router.delete('/:id', (req,res)=>{
-    // find the inventory to delete and remove it from the database
-    let id = req.params.id
-    let inventory = inventories.find(i => i.id === id)
-    let index = inventories.indexOf(inventory)
-    inventories.splice(index, 1)
+    // find the warehouse to delete and remove it from the database
+    console.log(req.params.id)
+    for (let i = 0; i <inventories.length; i++){
+        let currentWarehouse = inventories[i];
+        if(currentWarehouse.id == req.params.id) {
+            inventories.splice(i, 1);
+            return res.json(inventories)
+        }
+    }
+    res.status(404).send (`The invenotry with an id of ${(req.params.id)} does not exist`);
+
+    fs.writeFile('./data/inventories.json', JSON.stringify(inventories), (err)=>console.log(err))
+    res.status(200).json(inventories)
 })
 module.exports = router

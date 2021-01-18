@@ -1,13 +1,6 @@
-@import './partials/_general';
+@import './partials/general';
 
-.app{
-    padding: 0 16px;
-    @include tablet{
-        padding: 0 5%;
+.App{
 
-    }
-    @include desktop{
-        padding: 0 20%;
-
-    }
+    background-color: $gray-lt;
 }
