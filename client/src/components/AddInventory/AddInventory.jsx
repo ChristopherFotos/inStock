@@ -66,7 +66,9 @@ export default class AddInventory extends Component {
     }
 
     handleSubmit(){
+
         if(helpers.validateProperties(this.state).length > 0) return 
+
         axios.post('http://localhost:8080/inventory', this.state.item)
             .then(res=>this.props.history.push(`/inventory/${res.data.id}`))
     }
