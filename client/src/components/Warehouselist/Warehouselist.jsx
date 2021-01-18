@@ -72,7 +72,7 @@ componentDidMount() {
         {this.state.warehouses.map ((warehouse) => <Cardlist showModal={(e) => this.showModal(e)}
           key={warehouse.id} warehouses={warehouse}/>)}
       </div>
-     {this.state.show && <Modal  name={this.state.modalName} id={this.state.modalId} show={this.state.show} close={() => this.closeModal()} makeRequest={() => this.getNewWarehouseList()}/>}
+     {this.state.show && <Modal name={this.state.modalName} id={this.state.modalId} show={this.state.show} close={() => this.closeModal()} makeRequest={() => this.getNewWarehouseList()}/>}
         
     </div>
   )

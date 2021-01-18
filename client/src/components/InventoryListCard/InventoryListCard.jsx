@@ -4,7 +4,9 @@ import './InventoryListCard.scss'
 import TitleAndInfo from '../TitleAndInfo/TitleAndInfo';
 import ActionIcon from '../ActionIcon/ActionIcon';
 
-function InventoryListCard({item, isWHList}) {
+function InventoryListCard({item, isWHList, itemName, id, showModal}) {
+    // console.log(`showModal: ${showModal}`);
+    // let {itemName, id} = props.items
     let status;
     if(item.quantity > 0){
         status = true;
@@ -49,7 +51,7 @@ function InventoryListCard({item, isWHList}) {
                 <TitleAndInfo title={"WAREHOUSE"}info={item.warehouseName} />
     
                 <div className="info-card__icons">
-                    <ActionIcon type={"delete"} clickAction={deleteButton} />
+                    <ActionIcon type={"delete"} data-name={itemName} data-id={id} clickAction={showModal} />
                     <ActionIcon type={"edit"} clickAction={editButton} />
                 </div>
             </div>
