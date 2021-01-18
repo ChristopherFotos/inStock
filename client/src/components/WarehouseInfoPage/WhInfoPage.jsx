@@ -1,14 +1,43 @@
 import React, { Component } from 'react'
 import InvCardList from '../InvCardList/InvCardList';
 import WarehouseItemList from '../WarehouseItemList/WarehouseItemList';
-
+import WarehouseDetails from '../WarehouseDetails/WarehouseDetails'
 import SortButtons from '../SortButtons/SortButtons';
+import axios from 'axios';
 
-export class WhInfoPage extends Component {
+class WhInfoPage extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            "id": "",
+            "name": "",
+            "address": "",
+            "city": "",
+            "country": "",
+            "contact": {
+                "name": "",
+                "position": "",
+                "phone": "",
+                "email": ""
+            }
+        }
+    }
+    
+
+    componentDidMount(){
+        let id = this.props.match.params.id
+        console.log(this.props);
+        axios.get(`http://localhost:8080/warehouses/${id}`)
+            .then(res => {
+                this.setState(res.data)
+            }).catch(err=>{console.log(err);})
+    }
+
     render() {
         return (
             <div>
                 {/* <InventoryList /> */}
+                <WarehouseDetails warehouse={this.state}></WarehouseDetails>
                 <div className="info">
                 <div className="table-titles">
 
