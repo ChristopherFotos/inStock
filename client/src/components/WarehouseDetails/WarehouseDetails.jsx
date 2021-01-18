@@ -1,5 +1,6 @@
 import React from 'react'
 import './WarehouseDetails.scss'
+import {Link} from 'react-router-dom'
 import arrow from '../../assets/images/Icons/arrow_back-24px.svg'
 import edit from '../../assets/images/Icons/edit-white.svg'
 
@@ -11,12 +12,15 @@ export default function WarehouseDetails(props) {
             <div className="warehouse-details__header">
                 <div className="warehouse-details__left">
                     <img src={arrow} className = 'form__back-arrow' alt=""/> 
-                    <h1 className="form__heading">{props.name || 'King West'}</h1>
+                    <h1 className="form__heading">{props.warehouse.name}</h1>
                 </div>
+                
+                <Link to={`/warehouse/${props.warehouse.id}/edit`}>
                 <button className="warehouse-details__button">
                     <img src={edit} className='edit-icon'/>
                     <p className="warehouse-details__button-text">Edit</p>
-                </button>            
+                </button>        
+                </Link>
             </div>
             <div className="wrapper">
             <div className="warehouse-details__body">
@@ -28,7 +32,7 @@ export default function WarehouseDetails(props) {
 
                 <div className="warehouse-details__contact">
                     <div className="warehouse-details__contact-name">
-                        <h4 className="warehouse-details__subheading">CONTACT NAME:  </h4>
+                        <h4 className="warehouse-details__subheading">CONTACT NAME: </h4>
                         <p className="warehouse-details__p">{props.warehouse.contact.name}</p>
                         <p className="warehouse-details__p">{props.warehouse.contact.position}</p>
                     </div>

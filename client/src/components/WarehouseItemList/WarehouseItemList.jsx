@@ -26,7 +26,7 @@ export class WarehouseItemList extends Component {
 
         return (listToRender.map(item =>
                 // console.log(`EACH ITEM INFO: ${item}`)
-                <InventoryListCard item={item} isWHList={true} key={item.id} />
+                <InventoryListCard item={item} isWHList={true} key={item.id} itemId = {item.id}/>
             )
         )
     }

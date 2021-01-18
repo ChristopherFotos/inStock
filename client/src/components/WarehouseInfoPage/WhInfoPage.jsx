@@ -28,7 +28,7 @@ class WhInfoPage extends Component {
 
     componentDidMount() {
         let id = this.props.match.params.id;
-        console.log(this.props);
+        console.log('HERE IS THE ID ID DID ID',id);
         axios.get(`http://localhost:8080/warehouses/${id}`)
             .then(res => {
                 this.setState(res.data)

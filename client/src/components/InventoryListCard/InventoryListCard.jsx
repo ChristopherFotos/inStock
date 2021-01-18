@@ -1,10 +1,11 @@
 import React from 'react'
 import './InventoryListCard.scss'
-
+import {Link} from 'react-router-dom'
 import TitleAndInfo from '../TitleAndInfo/TitleAndInfo';
 import ActionIcon from '../ActionIcon/ActionIcon';
 
-function InventoryListCard({item, isWHList, itemName, id, showModal}) {
+function InventoryListCard({item, isWHList, itemName, itemId, showModal}) {
+    
     // console.log(`showModal: ${showModal}`);
     // let {itemName, id} = props.items
     let status;
@@ -51,8 +52,8 @@ function InventoryListCard({item, isWHList, itemName, id, showModal}) {
                 <TitleAndInfo title={"WAREHOUSE"}info={item.warehouseName} />
     
                 <div className="info-card__icons">
-                    <ActionIcon type={"delete"} itemName={item.itemName} itemId={item.id} clickAction={showModal} />
-                    <ActionIcon type={"edit"} clickAction={editButton} />
+                    <ActionIcon type={"delete"} itemName={item.itemName} itemId={itemId} clickAction={showModal} />                 
+                    <ActionIcon type={"edit"} itemId={itemId} thing1={'hello'}/>
                 </div>
             </div>
         )

@@ -8,7 +8,7 @@ function CardList({items, showModal}) {
         console.log(`# OF ITEMS TO RENDER: ${listToRender.length}`);
         return (listToRender.map(item =>
                 // console.log(`EACH ITEM INFO: ${item}`)
-                <InventoryListCard showModal={showModal} item={item} isWHList={false} key={item.id} />
+                <InventoryListCard showModal={showModal} item={item} isWHList={false} key={item.id} id={item.id}/>
             )
         )
     }
