@@ -10,6 +10,7 @@ import InventoryList from './components/InventoryList/InventoryList'
 import EditInventory from './components/EditInventory/EditInventory'
 import AddInventory from './components/AddInventory/AddInventory'
 import WarehouseDetails from './components/WarehouseDetails/WarehouseDetails'
+import ItemDetails from '../src/components/ItemDetails/ItemDetails';
 import WhInfoPage from '../src/components/WarehouseInfoPage/WhInfoPage'
 
 
@@ -34,6 +35,8 @@ class App extends React.Component {
 
               <Route path="/warehouse/:id/inventory" /> //displays a list of a specific warehouse's inventory
               <Route path="/warehouse/:id/inventory/:itemid" /> //displays a specific item info in a specific warehouse
+
+              <Route path="/test1" component={ItemDetails} />
             </Switch>
           <Footer/>
     </div>

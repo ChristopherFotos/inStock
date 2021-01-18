@@ -1,6 +1,7 @@
 @import '../../partials/_general';
 
 .ti-container{
+    font-family: 'TitilliumWeb';
     width: 50%;
     margin-bottom: 16px;
     @include tablet{
@@ -74,4 +75,19 @@
     @include tablet{
         display: none;
     }
+}
+
+.wide{
+    width: 100%;
+    &:first-child{
+        margin-bottom: 16px;
+    }
+}
+.smol{
+    width: 50%;
+    margin-bottom: 16px;
+}
+
+.align-left{
+    text-align: left;
 }
