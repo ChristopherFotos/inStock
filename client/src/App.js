@@ -25,8 +25,8 @@ class App extends React.Component {
               <Route path="/warehouses" exact/> //displays a list of warehouses
               <Route path="/warehouses/add" component={AddWarehouse}/> //displays a list of warehouses
               <Route path="/inventory" component={InventoryList} />
-              <Route path="/dummy" component={EditInventory} />
-              <Route path="/dummy2" component={AddInventory} />
+              <Route path="/inventory" component={EditInventory} />
+              <Route path="/inventory/add" component={AddInventory} />
               <Route path="/warehouse/:id" exact component={WarehouseDetails}/> //displays information on a specific warehouse
               <Route path="/warehouse/:id/edit" component={EditWarehouse}/> //displays the form to edit a particular warehouse
 
