@@ -16,6 +16,8 @@ export class InventoryList extends Component {
     }
 
     showModal = e => {
+        console.log("PRESSED");
+        
         this.setState({
         ...this.state,
         show: !this.state.show,
@@ -27,7 +29,7 @@ export class InventoryList extends Component {
     closeModal = () => {
         this.setState({
         ...this.state,
-        show: false
+        show: false,
   })
 }
     
@@ -100,7 +102,7 @@ export class InventoryList extends Component {
                     </div>
                 </div>
     
-            <InvCardList  showModal={(e) => this.showModal(e)}items={this.state.items} />
+            <InvCardList  showModal={(e) => this.showModal(e)} items={this.state.items} />
             {this.state.show && <ModalInvList name={this.state.modalName} id={this.state.modalId} show={this.state.show} close={() => this.closeModal()} makeRequest={() => this.getInventoryList()}/>}
             </div>
         )
