@@ -7,7 +7,8 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Warehouselist from './components/Warehouselist/Warehouselist';
 import InventoryList from './components/InventoryList/InventoryList'
-import WarehouseDetails from './components/WarehouseDetails/WarehouseDetails'
+import WarehouseDetails from './components/WarehouseDetails/WarehouseDetails';
+
 
 class App extends React.Component {
   
