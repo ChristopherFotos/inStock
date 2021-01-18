@@ -4,7 +4,7 @@ import './InventoryListCard.scss'
 import TitleAndInfo from '../TitleAndInfo/TitleAndInfo';
 import ActionIcon from '../ActionIcon/ActionIcon';
 
-function InventoryListCard({item}) {
+function InventoryListCard({item, isWHList}) {
     let status;
     if(item.quantity > 0){
         status = true;
@@ -21,21 +21,40 @@ function InventoryListCard({item}) {
         //connect item delete backend here
     }
 
-    return (
-        <div className="info-card">
-            <TitleAndInfo title={"INVENTORY ITEM"} info={item.itemName} isLink={true} />
-            <TitleAndInfo title={"CATEGORY"} info={item.category} />
-            <TitleAndInfo title={"STATUS"} info={"status"} status={status} />
-            <TitleAndInfo title={"QTY"} info={item.quantity} />
-            <TitleAndInfo mobileOnly={true} title={null} info={null} />
-            <TitleAndInfo title={"WAREHOUSE"}info={item.warehouseName} />
-
-            <div className="info-card__icons">
-                <ActionIcon type={"delete"} clickAction={deleteButton} />
-                <ActionIcon type={"edit"} clickAction={editButton} />
+    if(isWHList){
+        // console.log("WAREHOUSE LIST");
+        return (
+            <div className="info-card">
+                <TitleAndInfo title={"INVENTORY ITEM"} info={item.itemName} isLink={true} />
+                <TitleAndInfo title={"CATEGORY"} info={item.category} />
+                <TitleAndInfo title={"STATUS"} info={"status"} status={status} />
+                <TitleAndInfo title={"QTY"} info={item.quantity} />
+                <TitleAndInfo mobileOnly={true} title={null} info={null} />
+    
+                <div className="info-card__icons">
+                    <ActionIcon type={"delete"} clickAction={deleteButton} />
+                    <ActionIcon type={"edit"} clickAction={editButton} />
+                </div>
             </div>
-        </div>
-    )
+        )
+    }else if(!isWHList){
+        // console.log("NOT WAREHOUSE LIST");
+        return (
+            <div className="info-card">
+                <TitleAndInfo title={"INVENTORY ITEM"} info={item.itemName} isLink={true} />
+                <TitleAndInfo title={"CATEGORY"} info={item.category} />
+                <TitleAndInfo title={"STATUS"} info={"status"} status={status} />
+                <TitleAndInfo title={"QTY"} info={item.quantity} />
+                <TitleAndInfo mobileOnly={true} title={null} info={null} />
+                <TitleAndInfo title={"WAREHOUSE"}info={item.warehouseName} />
+    
+                <div className="info-card__icons">
+                    <ActionIcon type={"delete"} clickAction={deleteButton} />
+                    <ActionIcon type={"edit"} clickAction={editButton} />
+                </div>
+            </div>
+        )
+    }
 }
 
 export default InventoryListCard
