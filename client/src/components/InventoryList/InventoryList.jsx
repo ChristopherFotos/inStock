@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './inventoryList.scss'
 import axios from 'axios';
-
+import WarehouseDetails from '../WarehouseDetails/WarehouseDetails'
 import SortButtons from '../SortButtons/SortButtons';
 import InvCardList from '../InvCardList/InvCardList';
 

@@ -55,7 +55,12 @@ export default class Input extends Component {
             <div className="form__input-wrapper">
                 {this.props.empty}
                 <label htmlFor={this.props.name} className="form__label">{this.props.text}</label>
-                <input onChange={(e)=>{this.handleChange(e)}} name={this.props.name} type="text" value={this.props.value} className={`form__input ${this.props.empty ? 'form__input--empty' : ''}`}/>
+                <input 
+                onChange={(e)=>{this.handleChange(e)}} 
+                name={this.props.name} 
+                type={this.props.type ? this.props.type : 'text'} 
+                value={this.props.value} 
+                className={`form__input ${this.props.empty ? 'form__input--empty' : ''}`}/>
                 {(this.props.empty || this.state.invalid) && 
                     <span className="form__validation-span">
                         <img src={warning} alt="" className="form__warning"/>

@@ -2,83 +2,76 @@ import React, { Component } from 'react'
 import arrow from '../../assets/images/Icons/arrow_back-24px.svg'
 import add from '../../assets/images/Icons/add.svg'
 import helpers from '../../helper-functions'
+import DescriptionInput from '../DescriptionInput/DescriptionInput'
+import Dropdown from '../Dropdown/Dropdown'
+import RadioInput from '../RadioInput/RadioInput'
 import axios from'axios'
 import Input from '../Input/Input'
 import '../styles/form.scss'
+
+
 
 export default class AddInventory extends Component {
     constructor(props){
         super(props)
         this.state = {
-            id: '',
-            warehouseID: '',
-            warehouseName: '',
-            itemName: '',
-            description: '',
-            category: '',
-            status: '',
-                // in stock or out of stock
-            quantity: '',
-            // < 1 out of stock
+            item: {
+                id: '',
+                warehouseID: '',
+                warehouseName: '',
+                itemName: '',
+                description: '',
+                category: '',
+                status: 'In Stock',
+                quantity: '',
+            },
+            warehouseList: []
         }
     }
     componentDidMount(){
-        let id = this.props.match.params.id
-        axios.get(`http://localhost:8080/inventories/${id}`)
+        // let id = this.props.match.params.id
+        // axios.get(`http://localhost:8080/inventories/${id}`)
+        //     .then(res => {
+        //         this.setState(res.data)
+        //     })
+
+        axios.get('http://localhost:8080/warehouses')
             .then(res => {
-                this.setState(res.data)
+                this.state.warehouseList = res.data.map(w => w.name)
+                console.log(this.state.warehouseList);
             })
     }
-    // not sure about this...
+
     onRadioChange = (e) => {
+        console.log('grdagfdshfds');
         this.setState({
-          color: e.target.value
+            ...this.state,
+          status: e.target.value
         });
       }
 
-      isEmpty(name, contact){
-        let empty
-        if(!contact) !this.state[name]? empty = true : empty = false
-        if(contact)  !this.state.contact[name]? empty = true : empty = false
-        return empty
-    }
-
-    // if(inventory.length < 1) {
-        // affects the stock status }
-
-    handleDetailChange(e){
+    handleDetailChange(e){    
         this.setState({
             ...this.state,
-            [e.target.itemName]: e.target.value
-        })
-    }
-
-    handleContactChange(e){
-        this.setState({
-            ...this.state,
-            contact: {
-                ...this.state.contact,
-                [e.target.itemName]: e.target.value
+            item:{
+                ...this.state.item,
+                [e.target.name]: e.target.value
             }
+            
         })
-
+        console.log(this.state.item[e.target.name]);
     }
-
-    isEmpty(name, contact){
-        let empty
-        if(!contact) !this.state[name]? empty = true : empty = false
-        if(contact)  !this.state.contact[name]? empty = true : empty = false
-        return empty
-    }
-
-// toggleItem() {
-
-// }
 
     handleSubmit(){
         if(helpers.validateProperties(this.state).length > 0) return 
         axios.post('http://localhost:8080/inventories', this.state)
             .then(res=>this.props.history.push(`/inventory/${res.data.id}`))
+    }
+
+    isEmpty(name){
+        let empty
+        !this.state.item[name]? empty = true : empty = false
+        return empty
     }
 
     render() {
@@ -94,107 +87,59 @@ export default class AddInventory extends Component {
                         <h2 className="form__subheading">Item Details</h2>
 
                         <Input 
-                            value = {this.state.itemName}
-                            name='itemName'    
-                            empty={this.isEmpty('itemName')} 
+                            value = {this.state.item.itemName}
+                            name='itemName'                             
                             text='Item Name' 
+                            empty={this.isEmpty('itemName')}
                             handleChange={(e)=>this.handleDetailChange(e)}
                         />
                         
-                        <Input className="inventoryInput-tall"
-                            value = {this.state.description}
+                        <DescriptionInput
+                            value = {this.state.item.description}
                             name='description' 
-                            text='Description' 
-                            empty={this.isEmpty('description')} 
+                            text='Description'     
+                            empty={this.isEmpty('description')}
+                            handleChange = {this.handleDetailChange}                       
                             handleChange={(e)=>this.handleDetailChange(e)}
-                        /> 
-                        
-                            <DropdownMultiple
-                            searchable={['Search for category', 'No matching category']}
-                            value = {this.state.category}
-                            title="Please select"
-                            name='category' 
-                            empty={this.isEmpty('category')}
-                            list={this.state.category}
-                            toggleItem={this.toggleItem}
-                            handleChange={(e)=>this.handleDetailChange(e)}
-                          />
-                {/* are categories dynamic? */}
-                        {/* <select
-                            value = {this.state.category}
-                            title="Please select"
-                            name='category' 
-                            empty={this.isEmpty('category')}
-                            list={this.state.category}
-                            toggleItem={this.toggleItem}
-                            multiple={true}
-                            handleChange={(e)=>this.handleDetailChange(e)}
-                          /> 
-                          // map
-                          {this.categories.map(category => 
-                            <option value={category} key={category}>
-                            {category}</option>)}
-                          </select> */}
+                        />           
 
-                          {/* if not dynamic 
-                            <option value="electronics">Electronics</option>
-                            <option value="gear">Gear</option>
-                            <option value="apparel">Apparel</option>
-                            <option value="accessories">Accessories</option>
-                            <option value="health">Health</option>
+                        <Dropdown 
+                            handleChange={e=>this.handleDetailChange(e)}
+                            title = 'Category'
+                            name = 'category'
+                            options={
+                                ['','Electronics', 'Gear', 'Accessories', 'Health', 'Apparel']
+                            }
+                            empty = {this.isEmpty('category')}
+                        />
 
-                          */}
-                        
                     </div>
                 
 
                     <div className="form__right-section">
                     <h2 className="form__subheading">Item Availability</h2>
-                        <Input 
-                            value = {this.state.contact.name}
-                            name='name' 
-                            text='Contact Name' 
-                            empty={this.isEmpty('name', true)} 
-                            handleChange={(e)=>this.handleContactChange(e)} 
-                        />
-                        
-                    <div className="radio-container">
-                        <input type="radio"  
-                            value = {this.state.contact.status}
-                            name='status' 
-                            text='In stock' 
-                            empty={this.isEmpty('status', true)} 
-                            onClick={() => {
-                                onChange(value);
-                              }}
-                            handleChange={(e)=>this.onRadioChange(e)} 
-                        />
-                                                <input type="radio"  
-                            value = {this.state.contact.status}
-                            name='status' 
-                            text='Out of stock' 
-                            empty={this.isEmpty('status', false)} 
-                            onClick={() => {
-                                onChange(value);
-                              }}
-                            handleChange={(e)=>this.onRadioChange(e)} 
-                        />
-                        </div>
-                        <Input 
-                            value = {this.state.contact.quantity}
+                        <p className="form__label">Status</p>
+                        <RadioInput status={this.state.item.status} handleChange={e=>this.onRadioChange(e)}/>
+
+                        {this.state.item.status === 'In Stock' && <Input 
+                            value = {this.state.item.quantity}
                             name='quantity' 
-                            text='Quantity' 
-                            empty={this.isEmpty('quantity', true)} 
-                            handleChange={(e)=>this.handleContactChange(e)} 
+                            text='Quantity'
+                            type='number' 
+                            empty={this.isEmpty('quantity')}
+                            handleChange={(e)=>this.handleDetailChange(e)} 
+                        />}
+
+                            <Dropdown 
+                            handleChange={e=>this.handleDetailChange(e)}
+                            title = 'Warehouse'
+                            name = 'warehouseName'
+                            options={
+                                ['', ...this.state.warehouseList]
+                            }
+                            empty = {this.isEmpty('category')}
                         />
-                        <DropdownMultiple
-                            searchable={['Search for warehouse', 'No matching warehouse']}
-                            value = {this.state.contact.warehouse}
-                            name='warehouse' 
-                            text='Warehouse' 
-                            empty={this.isEmpty('warehouse', true)} 
-                            handleChange={(e)=>this.handleContactChange(e)} 
-                        />
+
                     </div>
             </div>
                 <div className="form__button-container">
