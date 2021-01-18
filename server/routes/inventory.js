@@ -53,6 +53,7 @@ router.post('/', (req, res)=>{
     const inventory = req.body
     console.log(inventory)
     let warehouse = warehouses.find((w)=>w.id === inventory.warehouseID)
+    console.log(warehouse)
     warehouse ? inventory.warehouseName = warehouse.name : res.status(400).send('invalid warehouse ID') 
 
     // check for invalid inputs

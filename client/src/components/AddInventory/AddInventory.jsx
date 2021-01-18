@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import arrow from '../../assets/images/Icons/arrow_back-24px.svg'
 import add from '../../assets/images/Icons/add.svg'
 import helpers from '../../helper-functions'
+import {Link} from 'react-router-dom'
 import DescriptionInput from '../DescriptionInput/DescriptionInput'
 import Dropdown from '../Dropdown/Dropdown'
 import RadioInput from '../RadioInput/RadioInput'
@@ -9,16 +10,12 @@ import axios from'axios'
 import Input from '../Input/Input'
 import '../styles/form.scss'
 
-
-
 export default class AddInventory extends Component {
     constructor(props){
         super(props)
         this.state = {
             item: {
-                id: '',
                 warehouseID: '',
-                warehouseName: '',
                 itemName: '',
                 description: '',
                 category: '',
@@ -45,6 +42,10 @@ export default class AddInventory extends Component {
             })
     }
 
+    goBack(){
+        this.props.history.push('/inventory')
+    }
+
     onRadioChange = (e) => {
         console.log('grdagfdshfds');
         this.setState({
@@ -67,7 +68,7 @@ export default class AddInventory extends Component {
 
     handleSubmit(){
         if(helpers.validateProperties(this.state).length > 0) return 
-        axios.post('http://localhost:8080/inventories', this.state)
+        axios.post('http://localhost:8080/inventory', this.state.item)
             .then(res=>this.props.history.push(`/inventory/${res.data.id}`))
     }
 
@@ -152,7 +153,7 @@ export default class AddInventory extends Component {
                     </div>
             </div>
                 <div className="form__button-container">
-                    <button className="form__button">
+                    <button className="form__button" onClick={()=>this.goBack()}>
                         Cancel
                     </button>
                     <button className="form__button" onClick={(e)=>this.handleSubmit(e)}>   
