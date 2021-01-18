@@ -37,7 +37,10 @@ export default class AddInventory extends Component {
 
         axios.get('http://localhost:8080/warehouses')
             .then(res => {
-                this.state.warehouseList = res.data.map(w => w.name)
+                this.setState({
+                    ...this.state,
+                    warehouseList: res.data.map(w => {return {name: w.name, value: w.id}})
+                })
                 console.log(this.state.warehouseList);
             })
     }
@@ -108,7 +111,13 @@ export default class AddInventory extends Component {
                             title = 'Category'
                             name = 'category'
                             options={
-                                ['','Electronics', 'Gear', 'Accessories', 'Health', 'Apparel']
+                                ['',
+                                    {value: 'Electronics', name: 'Electronics'}, 
+                                    {value:'Gear', name: 'Gear'}, 
+                                    {value:'Accessories', name:'Accessories'}, 
+                                    {value:'Health', name: 'Health'},
+                                    {value:'Apparel', name: 'Apparel'}
+                                ]
                             }
                             empty = {this.isEmpty('category')}
                         />
@@ -133,11 +142,11 @@ export default class AddInventory extends Component {
                             <Dropdown 
                             handleChange={e=>this.handleDetailChange(e)}
                             title = 'Warehouse'
-                            name = 'warehouseName'
+                            name = 'warehouseID'
                             options={
                                 ['', ...this.state.warehouseList]
                             }
-                            empty = {this.isEmpty('category')}
+                            empty = {this.isEmpty('warehouseID')}
                         />
 
                     </div>
@@ -146,9 +155,7 @@ export default class AddInventory extends Component {
                     <button className="form__button">
                         Cancel
                     </button>
-                    <button className="form__button" 
-                        onClick={(e)=>this.handleSubmit(e)}
-                    >   
+                    <button className="form__button" onClick={(e)=>this.handleSubmit(e)}>   
                         <img src={add} className='plus-icon'/> 
                         Add Inventory
                     </button>
