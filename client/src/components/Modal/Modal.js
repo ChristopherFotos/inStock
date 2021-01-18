@@ -11,7 +11,7 @@ class Modal extends React.Component {
     }
   handleDelete(){
     axios.delete(`http://localhost:8080/warehouses/${this.props.id}`)  
-
+    .then(this.props.makeRequest)
     .catch (err => {
       console.log(err)
     })
@@ -41,7 +41,7 @@ class Modal extends React.Component {
                     <div className="modal__cancel-but" id="cancel" onClick={this.props.close}>Cancel
                     </div>       
                     {/*  function handleDelete to delete data */}
-                    <div className="modal__delete-but" id="delete" onClick={() => {this.handleDelete(); this.props.makeRequest()}}>Delete
+                    <div className="modal__delete-but" id="delete" onClick={() => {this.handleDelete()}}>Delete
                     </div>
                 </div>
                 </div>

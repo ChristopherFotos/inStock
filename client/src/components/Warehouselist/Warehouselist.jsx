@@ -41,6 +41,7 @@ componentDidMount() {
   })
 }
  getNewWarehouseList = () => {
+   console.log('getting new list');
   axios.get (url)
   .then(res => {
     this.setState({warehouses: res.data, show: false})
