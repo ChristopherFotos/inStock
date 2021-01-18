@@ -11,7 +11,7 @@ import EditInventory from './components/EditInventory/EditInventory'
 import AddInventory from './components/AddInventory/AddInventory'
 import WarehouseDetails from './components/WarehouseDetails/WarehouseDetails'
 import WhInfoPage from '../src/components/WarehouseInfoPage/WhInfoPage'
-import WarehouseDetails from './components/WarehouseDetails/WarehouseDetails';
+
 
 class App extends React.Component {
   
