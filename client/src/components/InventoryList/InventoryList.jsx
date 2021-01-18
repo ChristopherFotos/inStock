@@ -103,7 +103,7 @@ export class InventoryList extends Component {
                 </div>
     
             <InvCardList  showModal={(e) => this.showModal(e)} items={this.state.items} />
-            {this.state.show && <ModalInvList name={this.state.modalName} id={this.state.modalId} show={this.state.show} close={() => this.closeModal()} makeRequest={() => this.getInventoryList()}/>}
+            {this.state.show && <ModalInvList items={this.state.items} name={this.state.modalName} id={this.state.modalId} show={this.state.show} close={() => this.closeModal()} makeRequest={() => this.getInventoryList()}/>}
             </div>
         )
     }
