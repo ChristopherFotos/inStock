@@ -11,7 +11,9 @@ export default function WarehouseDetails(props) {
 
             <div className="warehouse-details__header">
                 <div className="warehouse-details__left">
-                    <img src={arrow} className = 'form__back-arrow' alt=""/> 
+                    <Link to = '/'>
+                        <img src={arrow} className = 'form__back-arrow' alt=""/>
+                    </Link> 
                     <h1 className="form__heading">{props.warehouse.name}</h1>
                 </div>
                 
