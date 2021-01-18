@@ -4,8 +4,7 @@ import add from '../../assets/images/Icons/add.svg'
 import helpers from '../../helper-functions'
 import axios from'axios'
 import Input from '../Input/Input'
-import './EditInventory.scss'
-import '../EditWarehouse/EditWarehouse.scss'
+
 import '../styles/form.scss'
 
 export default class EditInventory extends Component {
@@ -66,69 +65,8 @@ export default class EditInventory extends Component {
 
     render() {
         return (
-            <div className = 'form titilliumWeb-Regular'>
-                <div className="form__header">
-                    <img src={arrow} className = 'form__back-arrow' alt=""/> 
-                    <h1 className="form__heading">Edit Inventory Item</h1>                    
-                </div>
-
-                <div className="flex-container">
-                    <div className="form__left-section">
-                        <h2 className="form__subheading">Item Details</h2>
-
-                        <Input 
-                            value = 'dummy'
-                            name='dummy'    
-                            text='Inventory Name' 
-                            empty={this.isEmpty('dummy')} 
-                            handleChange={(e)=>this.handleDetailChange(e)}
-                        />
-                        
-                        <Input 
-                            value = 'dummy'
-                            name='dummy' 
-                            text='Description' 
-                            empty={this.isEmpty('dummy')} 
-                            handleChange={(e)=>this.handleDetailChange(e)}
-                        />
-
-                        <Input 
-                            value = 'dummy'
-                            name='dummy'    
-                            text='Category' 
-                            empty={this.isEmpty('dummy')} 
-                            handleChange={(e)=>this.handleDetailChange(e)}
-                        />
-                    </div>
-
-                    <div className="form__right-section">
-                    <h2 className="form__subheading">Item Availability</h2>
-                        <Input 
-                            value = 'dummy'
-                            name='dummy' 
-                            text='Status' 
-                            empty={this.isEmpty('dummy', true)} 
-                            handleChange={(e)=>this.handleChange(e)} 
-                        />
-                        <Input 
-                            value = 'dummy'
-                            name='dummy' 
-                            text='Quantity' 
-                            empty={this.isEmpty('dummy', true)} 
-                            handleChange={(e)=>this.handleChange(e)} 
-                        />
-
-                        <Input 
-                            value = 'dummy'
-                            name='dummy' 
-                            text='Warehouse' 
-                            empty={this.isEmpty('dummy', true)} 
-                            handleChange={(e)=>this.handleChange(e)} 
-                        />
-                    </div>
-
-                </div>
-
+            
+            <div>
                 <div className="form__button-container">
                     <button className="form__button">
                         Cancel
