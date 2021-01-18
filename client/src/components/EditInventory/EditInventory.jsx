@@ -63,10 +63,9 @@ export default class EditInventory extends Component {
             item:{
                 ...this.state.item,
                 status: e.target.value
-            }
-          
+            }         
         });
-      }
+    }
 
     handleDetailChange(e){    
         this.setState({
@@ -173,8 +172,7 @@ export default class EditInventory extends Component {
                         Cancel
                     </button>
                     <button className="form__button" onClick={(e)=>this.handleSubmit(e)}>   
-                        <img src={add} className='plus-icon'/> 
-                        Add Inventory
+                        Save
                     </button>
                 </div>
             </div>

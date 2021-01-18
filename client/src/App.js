@@ -22,20 +22,19 @@ class App extends React.Component {
     <div className="App">
           <Header/>
             <Switch>
+
               <Route path='/' exact render={(routerProps) => <Warehouselist {...routerProps}/>}/>            
               <Route path="/warehouses" exact/> //displays a list of warehouses
               <Route path="/warehouses/add" component={AddWarehouse}/> //displays a list of warehouses
               <Route path="/inventory" exact component={InventoryList} />
               <Route path="/inventory/:id/edit" exact component={EditInventory} />
               <Route path="/inventory/add" component={AddInventory} />
-              <Route path="/warehouse/:id" exact component={WarehouseDetails}/> //displays information on a specific warehouse
+              <Route path="/testdetails" component={WarehouseDetails} />
+              <Route path="/warehouse/:id" exact component={WhInfoPage}/> //displays information on a specific warehouse
               <Route path="/warehouse/:id/edit" component={EditWarehouse}/> //displays the form to edit a particular warehouse
-
               <Route path="/test" component={WhInfoPage} /> //displays a list of a specific warehouse's inventory
-
               <Route path="/warehouse/:id/inventory" /> //displays a list of a specific warehouse's inventory
               <Route path="/warehouse/:id/inventory/:itemid" /> //displays a specific item info in a specific warehouse
-
               <Route path="/test1" component={ItemDetails} />
             </Switch>
           <Footer/>
