@@ -9,7 +9,7 @@ import Warehouselist from './components/Warehouselist/Warehouselist';
 import InventoryList from './components/InventoryList/InventoryList'
 import WarehouseDetails from './components/WarehouseDetails/WarehouseDetails'
 import WhInfoPage from '../src/components/WarehouseInfoPage/WhInfoPage'
-import WarehouseDetails from './components/WarehouseDetails/WarehouseDetails';
+
 
 class App extends React.Component {
   
