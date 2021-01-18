@@ -125,4 +125,5 @@ router.delete('/:id', (req,res)=>{
     fs.writeFile('./data/inventories.json', JSON.stringify(inventories), (err)=>console.log(err))
     res.status(200).json(inventories)
 })
+
 module.exports = router
