@@ -51,6 +51,9 @@ router.get('/:id', (req,res)=>{
 /* ADD NEW inventory */
 router.post('/', (req, res)=>{
     const inventory = req.body
+    console.log(inventory)
+    let warehouse = warehouses.find((w)=>w.id === inventory.warehouseID)
+    warehouse ? inventory.warehouseName = warehouse.name : res.status(400).send('invalid warehouse ID') 
 
     // check for invalid inputs
     let invalidProperties = h.validateProperties(inventory)
@@ -68,7 +71,7 @@ router.post('/', (req, res)=>{
 
     // write to file and respond with the new inventory
     fs.writeFile('./data/inventories.json', JSON.stringify(inventories), (err)=>console.log(err))
-    let newWarehouse = inventories.find(i => i.id === id)
+    let newInventory = inventories.find(i => i.id === id)
     res.json(newInventory)
 })
 
