@@ -134,12 +134,13 @@
         color:$black;
         width: 80%;
         margin: 0px 0px 1rem 0px;
-        padding-bottom: 1rem;
+        padding-bottom: 7rem;
         height: 40px;
         text-align: left;
 
         @include tablet {
             width: 100%;
+            padding-bottom: 0;
         }
     }
     &__copy {
