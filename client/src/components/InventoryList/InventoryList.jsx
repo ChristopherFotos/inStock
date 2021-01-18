@@ -26,7 +26,7 @@ export class InventoryList extends Component {
 
     render() {
         return (
-            <div className="list">
+            <div className="info">
                 <div className="info-header">
                     <h1 className="info-header__title">INVENTORY</h1>
                     <form className="info-header__form" id="inv-serach">
